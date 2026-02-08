@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>YOUR NAME</title>
+  <meta name="description" content="YOUR NAME — YOUR TITLE. Publications, work experience, education, awards, and media." />
+  <link rel="stylesheet" href="assets/style.css" />
+  <link rel="icon" href="assets/favicon.png" />
+
+  <!-- Optional: nicer previews when sharing links -->
+  <meta property="og:title" content="YOUR NAME" />
+  <meta property="og:description" content="YOUR TITLE. Publications, work experience, education, awards, and media." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://YOURUSERNAME.github.io/" />
+
+  <!-- Entity: Person schema (IMPORTANT — fill these with real links) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "YOUR NAME",
+    "url": "https://YOURUSERNAME.github.io/",
+    "jobTitle": "YOUR TITLE",
+    "affiliation": { "@type": "Organization", "name": "YOUR ORG" },
+    "sameAs": [
+      "GOOGLE_SCHOLAR_URL",
+      "LINKEDIN_URL",
+      "GITHUB_URL",
+      "OPTIONAL_X_OR_WEBSITE",
+      "OPTIONAL_YOUTUBE_CHANNEL"
+    ]
+  }
+  </script>
+</head>
+
+<body>
+  <main class="container">
+    <header class="header">
+      <div class="header-left">
+        <img class="avatar" src="assets/me.jpg" alt="Portrait of YOUR NAME" />
+      </div>
+
+      <div class="header-right">
+        <h1>YOUR NAME</h1>
+        <div class="subtitle">YOUR TITLE, YOUR ORG</div>
+        <div class="contact">YOUR_EMAIL (or “name at domain dot com”)</div>
+
+        <!-- “Rogério-style” quick links (placeholders ok, but real links help SEO/entity) -->
+        <nav class="toplinks" aria-label="Top links">
+          <a href="assets/cv.pdf" target="_blank" rel="noreferrer">CV</a>
+          <span class="sep">/</span>
+          <a href="LINKEDIN_URL" target="_blank" rel="noreferrer">LinkedIn</a>
+          <span class="sep">/</span>
+          <a href="#publications">Publications</a>
+          <span class="sep">/</span>
+          <a href="OPTIONAL_X_URL" target="_blank" rel="noreferrer">X</a>
+        </nav>
+
+        <p class="bio">
+          I’m a <strong>YOUR ROLE</strong> working on <strong>TOPIC A</strong>, <strong>TOPIC B</strong>, and <strong>TOPIC C</strong>.
+          Previously at <strong>PAST ORG</strong>. I build <strong>WHAT YOU BUILD</strong>.
+          <br/>
+          <!-- Optional: “entity-friendly” plain-language keywords -->
+          <span class="muted">Keywords: KEYWORD1, KEYWORD2, KEYWORD3, KEYWORD4</span>
+        </p>
+      </div>
+    </header>
+
+    <section class="section" id="news">
+      <h2>Selected News</h2>
+      <ul class="bullets">
+        <li><span class="date">YYYY</span> — Short highlight (paper accepted / release / award).</li>
+        <li><span class="date">YYYY</span> — Another highlight.</li>
+      </ul>
+    </section>
+
+    <section class="section" id="experience">
+      <h2>Work Experience</h2>
+      <div class="items">
+        <div class="item">
+          <div class="item-title">YOUR ORG — YOUR TITLE</div>
+          <div class="item-meta">City (optional) • YYYY–Present</div>
+          <ul class="subbullets">
+            <li>One-line impact statement (what you shipped / researched).</li>
+            <li>Another one-line statement.</li>
+          </ul>
+        </div>
+
+        <div class="item">
+          <div class="item-title">PAST ORG — YOUR TITLE</div>
+          <div class="item-meta">YYYY–YYYY</div>
+          <ul class="subbullets">
+            <li>One-line impact.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="publications">
+      <h2>Publications</h2>
+      <p class="muted">Selected publications below. Add more by duplicating an entry.</p>
+
+      <div class="pubs">
+        <!-- Publication template: duplicate this block -->
+        <div class="pub">
+          <div class="pub-title">
+            <a href="PAPER_LANDING_OR_PDF_URL" target="_blank" rel="noreferrer">Paper Title</a>
+          </div>
+          <div class="pub-authors">YOUR NAME, Coauthor, Coauthor</div>
+          <div class="pub-venue">Venue • Year</div>
+          <div class="pub-links">
+            <a href="PDF_URL" target="_blank" rel="noreferrer">PDF</a>
+            <span class="sep">·</span>
+            <a href="ARXIV_URL" target="_blank" rel="noreferrer">arXiv</a>
+            <span class="sep">·</span>
+            <a href="CODE_URL" target="_blank" rel="noreferrer">Code</a>
+            <span class="sep">·</span>
+            <a href="PROJECT_URL" target="_blank" rel="noreferrer">Project</a>
+          </div>
+        </div>
+
+        <div class="pub">
+          <div class="pub-title">
+            <a href="PAPER_URL" target="_blank" rel="noreferrer">Another Paper Title</a>
+          </div>
+          <div class="pub-authors">YOUR NAME, Coauthor</div>
+          <div class="pub-venue">arXiv • 2024</div>
+          <div class="pub-links">
+            <a href="PDF_URL" target="_blank" rel="noreferrer">PDF</a>
+            <span class="sep">·</span>
+            <a href="CODE_URL" target="_blank" rel="noreferrer">Code</a>
+          </div>
+        </div>
+      </div>
+
+      <p class="muted">
+        Full list: <a href="GOOGLE_SCHOLAR_URL" target="_blank" rel="noreferrer">Google Scholar</a>.
+      </p>
+    </section>
+
+    <section class="section" id="education">
+      <h2>Education</h2>
+      <div class="items">
+        <div class="item">
+          <div class="item-title">Ph.D., FIELD — UNIVERSITY</div>
+          <div class="item-meta">YYYY–YYYY • Advisor: NAME (optional)</div>
+        </div>
+        <div class="item">
+          <div class="item-title">B.S./M.S., FIELD — UNIVERSITY</div>
+          <div class="item-meta">YYYY–YYYY</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="awards">
+      <h2>Awards</h2>
+      <ul class="bullets">
+        <li><span class="date">YYYY</span> — Award name (organization).</li>
+        <li><span class="date">YYYY</span> — Another award.</li>
+      </ul>
+    </section>
+
+    <section class="section" id="media">
+      <h2>Media Presence</h2>
+      <p class="muted">Add YouTube interviews, podcasts, invited talks, press mentions.</p>
+
+      <div class="media-grid">
+        <a class="media-card" href="YOUTUBE_URL" target="_blank" rel="noreferrer">
+          <div class="media-title">YouTube Interview — Topic</div>
+          <div class="media-meta">Channel • YYYY</div>
+          <div class="media-desc">One sentence on what you covered.</div>
+        </a>
+
+        <a class="media-card" href="PODCAST_URL" target="_blank" rel="noreferrer">
+          <div class="media-title">Podcast — Episode Title</div>
+          <div class="media-meta">Podcast • YYYY</div>
+          <div class="media-desc">One sentence summary.</div>
+        </a>
+
+        <a class="media-card" href="PRESS_URL" target="_blank" rel="noreferrer">
+          <div class="media-title">Press — Outlet</div>
+          <div class="media-meta">Outlet • YYYY</div>
+          <div class="media-desc">One sentence summary.</div>
+        </a>
+
+        <a class="media-card" href="TALK_URL" target="_blank" rel="noreferrer">
+          <div class="media-title">Talk — Event</div>
+          <div class="media-meta">Event • YYYY</div>
+          <div class="media-desc">Talk title or theme.</div>
+        </a>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div>© <span id="y"></span> YOUR NAME</div>
+      <div class="muted">
+        <a href="LINKEDIN_URL" target="_blank" rel="noreferrer">LinkedIn</a>
+        <span class="sep">·</span>
+        <a href="GOOGLE_SCHOLAR_URL" target="_blank" rel="noreferrer">Scholar</a>
+      </div>
+    </footer>
+  </main>
+
+  <script>
+    document.getElementById("y").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
