@@ -94,19 +94,14 @@
     .avatar{
       width: 140px;
       height: 140px;
-      border-radius: 16px;
-      border: 1px solid var(--border);
-      background: #fafafa;
+      border-radius: 50%;          /* circular container */
+      border: none;                /* remove gray outline */
+      background: transparent;     /* remove gray background */
       display:flex;
       align-items:center;
       justify-content:center;
-      color: var(--muted);
-      font-size: 12px;
-      text-align: center;
-      padding: 10px;
       overflow:hidden;
-      margin-bottom: 14px;
-    }
+}
     .avatar img{
       width:100%;
       height:100%;
@@ -248,9 +243,9 @@
       <div class="orgs" aria-label="Organization links">
         <a href="https://www.microsoft.com/applied-sciences/people/danny-zhao" target="_blank" rel="noreferrer">Microsoft</a>
         <span class="sep">·</span>
-        <a href="https://engineering.nyu.edu/research-innovation/student-research/vertically-integrated-projects/vip-teams/ai-scientific-research" target="_blank" rel="noreferrer">New York University (NYU)</a>
+        <a href="https://engineering.nyu.edu/research-innovation/student-research/vertically-integrated-projects/vip-teams/ai-scientific-research" target="_blank" rel="noreferrer">NYU</a>
         <span class="sep">·</span>
-        <a href="https://futuretech.mit.edu/team/daniel-zhao" target="_blank" rel="noreferrer">Massachusetts Institute of Technology (MIT)</a>
+        <a href="https://futuretech.mit.edu/team/daniel-zhao" target="_blank" rel="noreferrer">MIT</a>
       </div>
 
       <p class="bio">
@@ -351,7 +346,6 @@
           <li>
             <strong>MIT Lincoln Laboratory</strong> — Member of Technical Staff, Senior Applied Scientist (2021–2022)
             <span class="muted">
-              Selected work:
               <a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=gODFPYIAAAAJ&citation_for_view=gODFPYIAAAAJ:QIV2ME_5wuYC" target="_blank" rel="noreferrer">LLM inference energy benchmarking</a>,
               <a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=gODFPYIAAAAJ&citation_for_view=gODFPYIAAAAJ:7PzlFSSx8tAC" target="_blank" rel="noreferrer">GPU power capping at scale</a>,
               <a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=gODFPYIAAAAJ&citation_for_view=gODFPYIAAAAJ:mVmsd5A6BfQC" target="_blank" rel="noreferrer">paper</a>,
@@ -523,7 +517,7 @@
       <div class="section" id="awards">
         <h2>Awards</h2>
         <ul class="bullets">
-          <li><strong>ICML 2025 Oral</strong> — <a href="https://icml.cc/virtual/2025/poster/45028" target="_blank" rel="noreferrer">ICML page</a></li>
+          <li><strong><a href="https://icml.cc/virtual/2025/poster/45028" target="_blank" rel="noreferrer">ICML 2025 Oral</a></strong>(Jul 2025)</li>
           <li><strong>Yale University Cowles Foundation Fellowship</strong> (Sep 2018)</li>
           <li><strong>1st Place, 2018 BlackRock Hackathon (HACK:BLK)</strong> (Apr 2018)</li>
           <li><strong>NSF Graduate Research Fellowship</strong> (Apr 2018)</li>
@@ -535,66 +529,85 @@
         </ul>
       </div>
 
-      <div class="section" id="media">
+     <div class="section" id="media">
         <h2>Media Coverage &amp; Presentations</h2>
         <ul class="lines">
+      
           <li>
             <a href="https://www.youtube.com/watch?v=lQeYRmy8nHQ&t=16s" target="_blank" rel="noreferrer">
               “We automated 150 tasks with AI Agents, just copy us” — Microsoft AI
             </a>
-            <div class="desc">YouTube interview discussing Windows AI and agentic experiences.</div>
+            <div class="desc">
+              In-depth discussion of how large language model agents are used to automate real-world Windows workflows, including design decisions, failure modes, and deployment lessons.
+            </div>
           </li>
-
+      
           <li>
             <a href="https://www.youtube.com/watch?v=AFeF0UUaKlY&t=51s" target="_blank" rel="noreferrer">
-              Scaling Laws: AI and Energy: What do we know? What are we learning?
+              Scaling Laws: AI and Energy — What do we know? What are we learning?
             </a>
-            <div class="desc">YouTube interview on AI energy costs and what we’re learning from measurement & benchmarking.</div>
+            <div class="desc">
+              Conversation on empirical evidence around AI energy consumption, scaling behavior, and how measurement-driven approaches can inform more sustainable AI systems.
+            </div>
           </li>
-
+      
           <li>
             <a href="https://www.microsoft.com/applied-sciences/projects/windows-agent-arena" target="_blank" rel="noreferrer">
-              Windows Agent Arena, Featured on Microsoft project page
+              Windows Agent Arena — Featured on Microsoft Project Page
             </a>
-            <div class="desc">Introduction to the new benchmark.</div>
+            <div class="desc">
+              Overview of a large-scale, open benchmarking framework for evaluating multimodal AI agents that reason, plan, and act within a real Windows OS environment.
+            </div>
           </li>
-
+      
           <li>
             <a href="https://news.mynavi.jp/techplus/article/20250502-3272371/" target="_blank" rel="noreferrer">
-              Japanese Press coverage (Mynavi Tech+) for Windows Agent Arena
+              Japanese Press Coverage — Windows Agent Arena (Mynavi Tech+)
             </a>
-            <div class="desc">Article covering related work and context.</div>
+            <div class="desc">
+              Japanese technology press coverage highlighting the motivation, technical design, and broader implications of Windows Agent Arena for agent-based AI research.
+            </div>
           </li>
-
+      
           <li>
             <a href="https://www.microsoft.com/en-us/microsoft-copilot/blog/2024/12/05/copilot-vision-now-in-preview-a-new-way-to-browse/" target="_blank" rel="noreferrer">
-              Copilot Vision, Featured on Microsoft Blog
+              Copilot Vision — Featured on Microsoft Blog
             </a>
-            <div class="desc">Announcement / write-up for Copilot Vision preview.</div>
+            <div class="desc">
+              Official announcement detailing Copilot Vision’s capabilities, including multimodal perception, on-screen reasoning, and real-time user assistance in Windows.
+            </div>
           </li>
-
+      
           <li>
             <a href="https://slideslive.com/38989947/combining-implicit-explicit-regularization-for-efficient-learning-in-deep-networks?ref=speaker-112395" target="_blank" rel="noreferrer">
-              NeurIPS 2022 Presentation — “Combining Implicit & Explicit Regularization for Efficient Learning in Deep Networks”
+              NeurIPS 2022 Presentation — “Combining Implicit &amp; Explicit Regularization for Efficient Learning in Deep Networks”
             </a>
-            <div class="desc">Talk recording (SlidesLive).</div>
+            <div class="desc">
+              Conference presentation analyzing how implicit and explicit regularization interact in deep learning, with implications for training efficiency and generalization.
+            </div>
           </li>
-
+      
           <li>
             <a href="https://dcc.mit.edu/adopt22/" target="_blank" rel="noreferrer">
-              ADOPT ’22 Presentation — “Loss Curve Approximations for Fast Neural Architecture Ranking & Training Elasticity Estimation”
+              ADOPT ’22 Presentation — “Loss Curve Approximations for Fast Neural Architecture Ranking &amp; Training Elasticity Estimation”
             </a>
-            <div class="desc">Event listing / Presentation Information.</div>
+            <div class="desc">
+              Presentation on using loss-curve modeling to rapidly rank neural architectures and estimate training elasticity without full end-to-end training.
+            </div>
           </li>
-
+      
           <li>
             <a href="https://www.mrs.org/meetings-events/annual-meetings/archive/meeting/presentations/view/2024-fall-meeting/2024-fall-meeting-4154893" target="_blank" rel="noreferrer">
-              MRS 2024 Fall Meeting — “Achieving High-Accuracy Battery Cycle Life Prediction Through Ultra High Precision Coulometry and Machine Learning”
+              MRS 2024 Fall Meeting Presentation — “Achieving High-Accuracy Battery Cycle Life Prediction Through Ultra High Precision Coulometry and Machine Learning”
             </a>
-            <div class="desc">Presentation listing.</div>
+            <div class="desc">
+              Research presentation demonstrating how high-precision electrochemical measurements combined with machine learning enable accurate battery lifetime prediction.
+            </div>
           </li>
+      
         </ul>
       </div>
+
 
       <footer class="footer">
         <div>© <span id="y"></span> Dan Zhao</div>
