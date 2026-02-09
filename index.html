@@ -91,30 +91,28 @@
     .right::-webkit-scrollbar-track{ background: transparent; }
 
     /* Left intro */
-    .topline{ display:flex; gap: 14px; align-items:flex-start; }
-
     .avatar{
-      width: 76px;
-      height: 76px;
-      border-radius: 14px;
+      width: 140px;
+      height: 140px;
+      border-radius: 16px;
       border: 1px solid var(--border);
+      background: #fafafa;
       display:flex;
       align-items:center;
       justify-content:center;
-      background: #fafafa;
       color: var(--muted);
       font-size: 12px;
       text-align: center;
-      padding: 8px;
-      flex: 0 0 auto;
+      padding: 10px;
       overflow:hidden;
+      margin-bottom: 14px;
     }
     .avatar img{
-      width: 100%;
-      height: 100%;
-      border-radius: 14px;
+      width:100%;
+      height:100%;
       object-fit: cover;
       display:block;
+      border-radius: 16px;
     }
 
     h1{ margin:0; font-size: 44px; letter-spacing:-0.02em; }
@@ -136,7 +134,7 @@
       font-size: 16px;
     }
 
-    /* Icon-only links (LinkedIn + Scholar only) */
+    /* Icon-only links (LinkedIn + Scholar) */
     .iconlinks{
       margin-top: 14px;
       display:flex;
@@ -192,13 +190,6 @@
       border-radius: 10px;
       border: 1px solid var(--border);
       background: #fafafa;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      color: var(--muted);
-      font-size: 12px;
-      text-align:center;
-      padding: 6px;
       overflow:hidden;
     }
     .pub-thumb img{
@@ -213,17 +204,17 @@
 
     .full-list{
       margin-top: 10px;
-      font-size: 14px; /* smaller */
+      font-size: 14px;
       color: var(--muted);
     }
 
-    /* Media as simple lines with short descriptions */
+    /* Media lines with descriptions */
     .lines{
       margin: 10px 0 0;
       padding-left: 18px;
     }
     .lines li{ margin: 12px 0; }
-    .lines .desc{ color: var(--muted); font-size: 14px; }
+    .lines .desc{ color: var(--muted); font-size: 14px; margin-top: 2px; }
 
     .footer{
       margin-top: 28px;
@@ -244,20 +235,20 @@
 
     <!-- LEFT: fixed intro -->
     <aside class="left" aria-label="Intro">
-      <div class="topline">
-        <div class="avatar" aria-label="Profile picture placeholder">
-          Add photo<br/>
-          <span class="muted">assets/profile.jpg</span>
-          <!-- If you upload assets/profile.jpg, replace the placeholder content with:
-          <img src="assets/profile.jpg" alt="Dan Zhao profile photo" />
-          -->
-        </div>
 
-        <div>
-          <h1>Dan Zhao</h1>
-          <div class="subtitle">AI Research Scientist</div>
-        </div>
+      <!-- Profile picture on top of name -->
+      <div class="avatar" aria-label="Profile picture">
+        <!-- Put your real photo at: assets/profile.jpg -->
+        <!-- Then replace the placeholder text below with the <img> tag. -->
+        Add photo<br/><span class="muted">assets/profile.jpg</span>
+
+        <!-- Example:
+        <img src="assets/profile.jpg" alt="Dan Zhao profile photo" />
+        -->
       </div>
+
+      <h1>Dan Zhao</h1>
+      <div class="subtitle">AI Research Scientist</div>
 
       <div class="orgs" aria-label="Organization links">
         <a href="https://www.microsoft.com/applied-sciences/people/danny-zhao" target="_blank" rel="noreferrer">Microsoft</a>
@@ -290,7 +281,7 @@
           </span>
         </a>
 
-        <!-- Google Scholar (mortarboard icon) -->
+        <!-- Google Scholar (mortarboard) -->
         <a class="iconlink" href="https://scholar.google.com/citations?user=gODFPYIAAAAJ&hl=en" target="_blank" rel="noreferrer" title="Google Scholar" aria-label="Google Scholar">
           <span class="icon" aria-hidden="true">
             <svg viewBox="0 0 24 24" fill="currentColor">
@@ -398,15 +389,11 @@
       <div class="section" id="publications">
         <h2>Selected Publications</h2>
 
-        <!-- Re-ordered per your requested sequence -->
         <div class="pubs">
 
           <div class="pub">
-            <div class="pub-thumb" aria-label="Publication image placeholder">
-              Add image<br/><span class="muted">assets/pubs/greener-world.jpg</span>
-              <!-- Replace with:
-              <img src="assets/pubs/greener-world.jpg" alt="A Green(er) World for AI thumbnail" />
-              -->
+            <div class="pub-thumb">
+              <img src="assets/Greener World for AI.png" alt="A Green(er) World for AI thumbnail" />
             </div>
             <div>
               <div class="pub-title">
@@ -424,8 +411,8 @@
           </div>
 
           <div class="pub">
-            <div class="pub-thumb" aria-label="Publication image placeholder">
-              Add image<br/><span class="muted">assets/pubs/words-to-watts.jpg</span>
+            <div class="pub-thumb">
+              <img src="assets/From Words to Watts.png" alt="From Words to Watts thumbnail" />
             </div>
             <div>
               <div class="pub-title">
@@ -443,8 +430,8 @@
           </div>
 
           <div class="pub">
-            <div class="pub-thumb" aria-label="Publication image placeholder">
-              Add image<br/><span class="muted">assets/pubs/power-capping.jpg</span>
+            <div class="pub-thumb">
+              <img src="assets/Sustainable Super Computing.png" alt="Sustainable Supercomputing for AI thumbnail" />
             </div>
             <div>
               <div class="pub-title">
@@ -462,8 +449,8 @@
           </div>
 
           <div class="pub">
-            <div class="pub-thumb" aria-label="Publication image placeholder">
-              Add image<br/><span class="muted">assets/pubs/windows-agent-arena.jpg</span>
+            <div class="pub-thumb">
+              <img src="assets/Windows Agent Arena.png" alt="Windows Agent Arena thumbnail" />
             </div>
             <div>
               <div class="pub-title">
@@ -481,8 +468,8 @@
           </div>
 
           <div class="pub">
-            <div class="pub-thumb" aria-label="Publication image placeholder">
-              Add image<br/><span class="muted">assets/pubs/layer-by-layer.jpg</span>
+            <div class="pub-thumb">
+              <img src="assets/Layer by Layer.png" alt="Layer by Layer thumbnail" />
             </div>
             <div>
               <div class="pub-title">
@@ -500,8 +487,8 @@
           </div>
 
           <div class="pub">
-            <div class="pub-thumb" aria-label="Publication image placeholder">
-              Add image<br/><span class="muted">assets/pubs/videowebarena.jpg</span>
+            <div class="pub-thumb">
+              <img src="assets/VideoWeb Arena.png" alt="VideoWebArena thumbnail" />
             </div>
             <div>
               <div class="pub-title">
@@ -531,7 +518,13 @@
           <li><strong>New York University</strong> — MS, Computer Science (2021–2026) <span class="muted">Concentration in artificial intelligence.</span></li>
           <li><strong>Yale University</strong> — PhD, Economics (2018–2020) <span class="muted">ABD (incomplete).</span></li>
           <li><strong>University of Oxford</strong> — Philosophy, Politics, Economics (2012–2013) <span class="muted">Grade: First Class with Honors · Visiting Scholar.</span></li>
-          <li><strong>Williams College</strong> — BA, Economics (2010–2014)</li>
+          <li>
+            <strong>Williams College</strong> — BA, Economics (2010–2014)
+            <span class="muted">Magna Cum Laude · Phi Beta Kappa · First Class Honours with Distinction (in Economics)</span>
+            <span class="muted">
+              Founder, <a href="https://williamscollegelawsocietydotcom.wordpress.com/leadership/founders/" target="_blank" rel="noreferrer">Law Society</a>
+            </span>
+          </li>
         </ul>
       </div>
 
@@ -540,12 +533,9 @@
         <ul class="bullets">
           <li><strong>ICML 2025 Oral</strong> — <a href="https://icml.cc/virtual/2025/poster/45028" target="_blank" rel="noreferrer">ICML page</a></li>
           <li><strong>Yale University Cowles Foundation Fellowship</strong> (Sep 2018)</li>
-          <li><strong>2018 BlackRock Hackathon (HACK:BLK)</strong> — 1st place, Human Analytics &amp; People Operations Category (Apr 2018)</li>
+          <li><strong>1st Place, 2018 BlackRock Hackathon (HACK:BLK)</strong> (Apr 2018)</li>
           <li><strong>NSF Graduate Research Fellowship</strong> (Apr 2018)</li>
-          <li><strong>Magna Cum Laude, Williams College</strong> (Jun 2014)</li>
           <li><strong>John B. McDowell 1980 Scholarship</strong> (Feb 2014)</li>
-          <li><strong>Phi Beta Kappa</strong> (Sep 2013)</li>
-          <li><strong>First Class Honours with Distinction (in Economics)</strong> (Apr 2013)</li>
           <li><strong>Lathers Prize in Political Science</strong> (May 2012)</li>
           <li><strong>Cornelius Lansing Hays Jr. Scholarship</strong> (Feb 2012)</li>
           <li><strong>S. Birmingham Class of 1950 Scholarship</strong> (Feb 2011)</li>
@@ -557,35 +547,58 @@
         <h2>Media Coverage &amp; Presentations</h2>
         <ul class="lines">
           <li>
-            <a href="https://www.youtube.com/watch?v=lQeYRmy8nHQ&t=16s" target="_blank" rel="noreferrer">YouTube interview</a>
-            <div class="desc">Interview appearance and discussion of recent work.</div>
+            <a href="https://www.youtube.com/watch?v=lQeYRmy8nHQ&t=16s" target="_blank" rel="noreferrer">
+              “We automated 150 tasks with AI Agents, just copy us” — Microsoft AI
+            </a>
+            <div class="desc">YouTube interview discussing Windows AI and agentic experiences.</div>
           </li>
+
           <li>
-            <a href="https://www.youtube.com/watch?v=AFeF0UUaKlY&t=51s" target="_blank" rel="noreferrer">YouTube interview</a>
-            <div class="desc">Interview appearance and discussion of research and applications.</div>
+            <a href="https://www.youtube.com/watch?v=AFeF0UUaKlY&t=51s" target="_blank" rel="noreferrer">
+              Scaling Laws: AI and Energy: What do we know? What are we learning?
+            </a>
+            <div class="desc">YouTube interview on AI energy costs and what we’re learning from measurement & benchmarking.</div>
           </li>
+
           <li>
-            <a href="https://www.microsoft.com/applied-sciences/projects/windows-agent-arena" target="_blank" rel="noreferrer">Windows Agent Arena (Microsoft project page)</a>
+            <a href="https://www.microsoft.com/applied-sciences/projects/windows-agent-arena" target="_blank" rel="noreferrer">
+              Windows Agent Arena (Microsoft project page)
+            </a>
             <div class="desc">Project and benchmark overview.</div>
           </li>
+
           <li>
-            <a href="https://news.mynavi.jp/techplus/article/20250502-3272371/" target="_blank" rel="noreferrer">Press coverage (Mynavi Tech+)</a>
+            <a href="https://news.mynavi.jp/techplus/article/20250502-3272371/" target="_blank" rel="noreferrer">
+              Press coverage (Mynavi Tech+)
+            </a>
             <div class="desc">Article covering related work and context.</div>
           </li>
+
           <li>
-            <a href="https://www.microsoft.com/en-us/microsoft-copilot/blog/2024/12/05/copilot-vision-now-in-preview-a-new-way-to-browse/" target="_blank" rel="noreferrer">Copilot Vision (Microsoft blog)</a>
+            <a href="https://www.microsoft.com/en-us/microsoft-copilot/blog/2024/12/05/copilot-vision-now-in-preview-a-new-way-to-browse/" target="_blank" rel="noreferrer">
+              Copilot Vision (Microsoft blog)
+            </a>
             <div class="desc">Announcement / write-up for Copilot Vision preview.</div>
           </li>
+
           <li>
-            <a href="https://slideslive.com/38989947/combining-implicit-explicit-regularization-for-efficient-learning-in-deep-networks?ref=speaker-112395" target="_blank" rel="noreferrer">NeurIPS 2022 presentation (SlidesLive)</a>
-            <div class="desc">Talk recording.</div>
+            <a href="https://slideslive.com/38989947/combining-implicit-explicit-regularization-for-efficient-learning-in-deep-networks?ref=speaker-112395" target="_blank" rel="noreferrer">
+              NeurIPS 2022 presentation — “Combining Implicit & Explicit Regularization for Efficient Learning in Deep Networks”
+            </a>
+            <div class="desc">Talk recording (SlidesLive).</div>
           </li>
+
           <li>
-            <a href="https://dcc.mit.edu/adopt22/" target="_blank" rel="noreferrer">ADOPT ’22</a>
+            <a href="https://dcc.mit.edu/adopt22/" target="_blank" rel="noreferrer">
+              ADOPT ’22 — Qi Chen, Matthew L. Weiss, et al., “Loss Curve Approximations for Fast Neural Architecture Ranking & Training Elasticity Estimation”
+            </a>
             <div class="desc">Event listing / presentation information.</div>
           </li>
+
           <li>
-            <a href="https://www.mrs.org/meetings-events/annual-meetings/archive/meeting/presentations/view/2024-fall-meeting/2024-fall-meeting-4154893" target="_blank" rel="noreferrer">Materials Research Society 2024 Fall Meeting</a>
+            <a href="https://www.mrs.org/meetings-events/annual-meetings/archive/meeting/presentations/view/2024-fall-meeting/2024-fall-meeting-4154893" target="_blank" rel="noreferrer">
+              MRS 2024 Fall Meeting — “Achieving High-Accuracy Battery Cycle Life Prediction Through Ultra High Precision Coulometry and Machine Learning”
+            </a>
             <div class="desc">Presentation listing.</div>
           </li>
         </ul>
