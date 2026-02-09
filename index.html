@@ -12,6 +12,7 @@
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://dzai.github.io/" />
 
+  <!-- Keep your existing stylesheet if you want; the <style> below overrides layout to fix the narrow column issue. -->
   <link rel="stylesheet" href="assets/style.css" />
   <link rel="icon" href="assets/favicon.png" />
 
@@ -37,218 +38,109 @@
     ]
   }
   </script>
-</head>
 
-<body>
-<main class="container">
+  <!-- Layout fix + media thumbnails -->
+  <style>
+    :root{
+      --bg:#ffffff;
+      --text:#111;
+      --muted:#555;
+      --link:#0b57d0;
+      --border:#e6e6e6;
+      --max: 1180px; /* widened from 920 to fix narrow column */
+    }
+    *{ box-sizing:border-box; }
+    html,body{ margin:0; padding:0; }
+    body{
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+      color:var(--text);
+      background:var(--bg);
+      line-height:1.55;
+    }
+    .container{
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 28px 20px 56px;
+    }
+    a{ color:var(--link); text-decoration:none; }
+    a:hover{ text-decoration:underline; }
+    .sep{ color:#999; padding: 0 6px; }
+    .muted{ color: var(--muted); }
 
-  <header class="header">
-    <div class="header-main">
-      <h1>Dan Zhao</h1>
-      <div class="subtitle">AI Research Scientist</div>
+    /* Header now uses a two-column grid on wide screens */
+    .header{
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--border);
+    }
+    .header-grid{
+      display:grid;
+      grid-template-columns: 1.25fr .75fr;
+      gap: 22px;
+      align-items:start;
+    }
+    @media (max-width: 860px){
+      .header-grid{ grid-template-columns: 1fr; }
+    }
 
-      <div class="orgs">
-        <div class="org-line">
-          <a href="https://www.microsoft.com/applied-sciences/people/danny-zhao" target="_blank" rel="noreferrer">Microsoft</a>
-        </div>
-        <div class="org-line">
-          <a href="https://engineering.nyu.edu/research-innovation/student-research/vertically-integrated-projects/vip-teams/ai-scientific-research"
-             target="_blank" rel="noreferrer">New York University (NYU)</a>
-        </div>
-        <div class="org-line">
-          <a href="https://futuretech.mit.edu/team/daniel-zhao" target="_blank" rel="noreferrer">Massachusetts Institute of Technology (MIT)</a>
-        </div>
-      </div>
+    h1{ margin:0; font-size: 42px; letter-spacing:-0.02em; }
+    .subtitle{ margin-top: 6px; color: var(--muted); font-weight: 650; }
 
-      <p class="bio">
-        I am an AI research scientist focusing on <strong>AI Agents</strong>, <strong>Efficient AI</strong>, and <strong>AI for scientific discovery</strong>.
-        Previously, I worked at
-        <a href="https://www.microsoft.com/applied-sciences" target="_blank" rel="noreferrer">Microsoft Applied Sciences</a>,
-        where I developed AI-based experiences for
-        <a href="https://www.microsoft.com/en-us/microsoft-copilot/blog/2024/12/05/copilot-vision-now-in-preview-a-new-way-to-browse/"
-           target="_blank" rel="noreferrer">Windows Copilot</a>,
-        <a href="https://www.microsoft.com/applied-sciences/projects/windows-agent-arena" target="_blank" rel="noreferrer">Windows Agent Arena</a>,
-        and
-        <a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=gODFPYIAAAAJ&citation_for_view=gODFPYIAAAAJ:e5wmG9Sq2KIC"
-           target="_blank" rel="noreferrer">WinSpot</a>.
-        During my tenure at MIT Lincoln Laboratory, I helped pioneer “green AI” (energy-efficient AI), focused on understanding and mitigating the energy
-        impact of AI workloads spanning training through inference/deployment, including work on
-        <a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=gODFPYIAAAAJ&citation_for_view=gODFPYIAAAAJ:QIV2ME_5wuYC"
-           target="_blank" rel="noreferrer">energy costs of LLM inference</a>.
-      </p>
+    .orgs{ margin-top: 12px; }
+    .org-line{ margin: 4px 0; }
 
-      <p class="links">
-        <a href="https://scholar.google.com/citations?user=gODFPYIAAAAJ&hl=en" target="_blank" rel="noreferrer">Google Scholar</a>
-        <span class="sep">·</span>
-        <a href="https://www.linkedin.com/in/danzhao0/" target="_blank" rel="noreferrer">LinkedIn</a>
-      </p>
+    .bio{ margin-top: 14px; margin-bottom: 0; max-width: 95ch; }
+    .links{ margin-top: 10px; }
 
-      <p class="muted">
-        Project links: <span class="placeholder">(add your project links here later)</span>
-      </p>
-    </div>
-  </header>
+    .section{ padding-top: 22px; }
+    .section h2{ margin: 0 0 10px; font-size: 22px; letter-spacing:-0.01em; }
 
-  <section class="section" id="experience">
-    <h2>Work Experience</h2>
-    <p class="muted">
-      Full experience details are on
-      <a href="https://www.linkedin.com/in/danzhao0/" target="_blank" rel="noreferrer">LinkedIn</a>.
-    </p>
+    .bullets{ margin: 10px 0 0; padding-left: 18px; }
+    .bullets li{ margin: 8px 0; }
 
-    <ul class="bullets">
-      <li><strong>Microsoft</strong> — Senior Research Scientist (2024–2025)</li>
-      <li><strong>MIT CSAIL</strong> — Research Scientist (2023–2025)</li>
-      <li><strong>SandboxAQ</strong> — AI Fellow in Residence (2023–2024)</li>
-      <li><strong>Epic Games</strong> — Senior Data Scientist (2023)</li>
-      <li><strong>Twitter</strong> — Senior Applied Scientist (2022–2023)</li>
-      <li><strong>Genentech</strong> — Visiting Researcher (2022–2023)</li>
-      <li><strong>NASA JPL</strong> — Visiting Researcher (2022–2023)</li>
-      <li><strong>NASA Ames</strong> — Visiting Researcher (2022–2023)</li>
-      <li><strong>MIT</strong> — Advisor & Visiting Research Scientist (2021–2023)</li>
-      <li><strong>MIT Lincoln Laboratory</strong> — Member of Technical Staff, Senior Applied Scientist (2021–2022)</li>
-      <li><strong>Yale University</strong> — Graduate Student & Researcher (2018–2020)</li>
-    </ul>
-  </section>
+    /* Publications */
+    .pubs{ display:flex; flex-direction:column; gap: 14px; margin-top: 10px; }
+    .pub{
+      padding: 12px 12px;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      background: #fff;
+    }
+    .pub-title{ font-weight: 750; }
+    .pub-authors{ margin-top: 4px; color: var(--muted); font-size: 14px; }
+    .pub-meta{ margin-top: 2px; color: var(--muted); font-size: 14px; }
+    .pub-desc{ margin-top: 8px; color: #222; }
 
-  <section class="section" id="publications">
-    <h2>Selected Publications</h2>
+    /* Media previews */
+    .media-grid{
+      display:grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 12px;
+    }
+    @media (max-width: 980px){ .media-grid{ grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+    @media (max-width: 680px){ .media-grid{ grid-template-columns: 1fr; } }
 
-    <div class="pubs">
-      <div class="pub">
-        <div class="pub-title">
-          <a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=gODFPYIAAAAJ&citation_for_view=gODFPYIAAAAJ:QIV2ME_5wuYC"
-             target="_blank" rel="noreferrer">
-            From Words to Watts: Benchmarking the Energy Costs of Large Language Model Inference
-          </a>
-        </div>
-      </div>
+    .media-card{
+      display:block;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow:hidden;
+      color: inherit;
+      background: #fff;
+    }
+    .media-card:hover{ text-decoration:none; border-color:#cfcfcf; }
+    .media-thumb{
+      width:100%;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      display:block;
+      background:#f4f4f4;
+    }
+    .media-body{ padding: 12px; }
+    .media-title{ font-weight: 750; }
+    .media-meta{ margin-top: 4px; color: var(--muted); font-size: 13px; }
+    .media-desc{ margin-top: 8px; color: var(--muted); font-size: 14px; }
 
-      <div class="pub">
-        <div class="pub-title">
-          <a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=gODFPYIAAAAJ&citation_for_view=gODFPYIAAAAJ:hFOr9nPyWt4C"
-             target="_blank" rel="noreferrer">
-            Windows Agent Arena: Evaluating Multi-modal OS Agents at Scale
-          </a>
-        </div>
-      </div>
-
-      <div class="pub">
-        <div class="pub-title">
-          <a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=gODFPYIAAAAJ&citation_for_view=gODFPYIAAAAJ:HDshCWvjkbEC"
-             target="_blank" rel="noreferrer">
-            Layer by Layer: Uncovering Hidden Representations in Language Models
-          </a>
-        </div>
-      </div>
-
-      <div class="pub">
-        <div class="pub-title">
-          <a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=gODFPYIAAAAJ&citation_for_view=gODFPYIAAAAJ:7PzlFSSx8tAC"
-             target="_blank" rel="noreferrer">
-            Sustainable Supercomputing for AI: GPU Power Capping at HPC Scale
-          </a>
-        </div>
-      </div>
-
-      <div class="pub">
-        <div class="pub-title">
-          <a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=gODFPYIAAAAJ&citation_for_view=gODFPYIAAAAJ:-f6ydRqryjwC"
-             target="_blank" rel="noreferrer">
-            VideoWebArena: Evaluating Long Context Multimodal Agents with Video Understanding Web Tasks
-          </a>
-        </div>
-      </div>
-
-      <div class="pub">
-        <div class="pub-title">
-          <a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=gODFPYIAAAAJ&citation_for_view=gODFPYIAAAAJ:qxL8FJ1GzNcC"
-             target="_blank" rel="noreferrer">
-            A Green(er) World for AI
-          </a>
-        </div>
-      </div>
-    </div>
-
-    <p class="muted">
-      Full list:
-      <a href="https://scholar.google.com/citations?user=gODFPYIAAAAJ&hl=en" target="_blank" rel="noreferrer">Google Scholar</a>
-    </p>
-  </section>
-
-  <section class="section" id="education">
-    <h2>Education</h2>
-    <ul class="bullets">
-      <li><strong>New York University</strong> — MS, Computer Science (2021–2026)</li>
-      <li><strong>Yale University</strong> — PhD, Economics (2018–2020)</li>
-      <li><strong>University of Oxford</strong> — PPE (2012–2013)</li>
-      <li><strong>Williams College</strong> — BA, Economics (2010–2014)</li>
-    </ul>
-  </section>
-
-  <section class="section" id="awards">
-    <h2>Awards</h2>
-    <ul class="bullets">
-      <li><strong>ICML 2025 Oral</strong> —
-        <a href="https://icml.cc/virtual/2025/poster/45028" target="_blank" rel="noreferrer">ICML page</a>
-      </li>
-      <li>Magna Cum Laude</li>
-      <li>Phi Beta Kappa</li>
-      <li>First Class Honours with Distinction (in Economics)</li>
-      <li>Lathers Prize in Political Science</li>
-      <li>Cornelius Lansing Hays Jr. Scholarship</li>
-    </ul>
-  </section>
-
-  <section class="section" id="media">
-    <h2>Media Presence</h2>
-
-    <div class="media-grid">
-      <a class="media-card" href="https://www.youtube.com/watch?v=lQeYRmy8nHQ&t=16s" target="_blank" rel="noreferrer">
-        <div class="media-title">YouTube Interview</div>
-        <div class="media-meta">Video</div>
-        <div class="media-desc">Link to interview.</div>
-      </a>
-
-      <a class="media-card" href="https://www.youtube.com/watch?v=AFeF0UUaKlY&t=51s" target="_blank" rel="noreferrer">
-        <div class="media-title">YouTube Interview</div>
-        <div class="media-meta">Video</div>
-        <div class="media-desc">Link to interview.</div>
-      </a>
-
-      <a class="media-card" href="https://www.microsoft.com/applied-sciences/projects/windows-agent-arena" target="_blank" rel="noreferrer">
-        <div class="media-title">Windows Agent Arena</div>
-        <div class="media-meta">Microsoft Applied Sciences</div>
-        <div class="media-desc">Project page.</div>
-      </a>
-
-      <a class="media-card" href="https://news.mynavi.jp/techplus/article/20250502-3272371/" target="_blank" rel="noreferrer">
-        <div class="media-title">Press Coverage</div>
-        <div class="media-meta">Mynavi Tech+</div>
-        <div class="media-desc">Article.</div>
-      </a>
-
-      <a class="media-card" href="https://www.microsoft.com/en-us/microsoft-copilot/blog/2024/12/05/copilot-vision-now-in-preview-a-new-way-to-browse/" target="_blank" rel="noreferrer">
-        <div class="media-title">Copilot Vision</div>
-        <div class="media-meta">Microsoft Copilot Blog</div>
-        <div class="media-desc">Announcement / write-up.</div>
-      </a>
-    </div>
-  </section>
-
-  <footer class="footer">
-    <div>© <span id="y"></span> Dan Zhao</div>
-    <div class="muted">
-      <a href="https://www.linkedin.com/in/danzhao0/" target="_blank" rel="noreferrer">LinkedIn</a>
-      <span class="sep">·</span>
-      <a href="https://scholar.google.com/citations?user=gODFPYIAAAAJ&hl=en" target="_blank" rel="noreferrer">Google Scholar</a>
-    </div>
-  </footer>
-
-</main>
-
-<script>
-  document.getElementById("y").textContent = new Date().getFullYear();
-</script>
-</body>
-</html>
+    .placeholder{
+      border: 1px dashed #bbb;
+      padding
