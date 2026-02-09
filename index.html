@@ -56,7 +56,7 @@
     a{ color:var(--link); text-decoration:none; }
     a:hover{ text-decoration:underline; }
 
-    /* ===== Layout: left fixed, right scrollable ===== */
+    /* Layout: left fixed, right scrollable */
     .page{
       max-width: var(--max);
       margin: 0 auto;
@@ -65,22 +65,12 @@
       grid-template-columns: 360px minmax(0, 1fr);
       gap: 24px;
       align-items:start;
-      height: 100vh;          /* makes right column scroll within viewport */
+      height: 100vh;
     }
     @media (max-width: 980px){
-      .page{
-        grid-template-columns: 1fr;
-        height: auto;
-      }
-      .left{
-        position: static;
-        max-height: none;
-      }
-      .right{
-        height: auto;
-        overflow: visible;
-        padding-right: 0;
-      }
+      .page{ grid-template-columns: 1fr; height:auto; }
+      .left{ position: static; max-height:none; }
+      .right{ height:auto; overflow:visible; padding-right:0; }
     }
 
     .left{
@@ -88,10 +78,9 @@
       top: 18px;
       align-self: start;
       max-height: calc(100vh - 36px);
-      overflow: hidden; /* keep left clean */
+      overflow: hidden;
       padding-right: 6px;
     }
-
     .right{
       height: calc(100vh - 48px);
       overflow: auto;
@@ -101,7 +90,33 @@
     .right::-webkit-scrollbar-thumb{ background: #d7d7d7; border-radius: 12px; }
     .right::-webkit-scrollbar-track{ background: transparent; }
 
-    /* ===== Left intro block ===== */
+    /* Left intro */
+    .topline{ display:flex; gap: 14px; align-items:flex-start; }
+
+    .avatar{
+      width: 76px;
+      height: 76px;
+      border-radius: 14px;
+      border: 1px solid var(--border);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      background: #fafafa;
+      color: var(--muted);
+      font-size: 12px;
+      text-align: center;
+      padding: 8px;
+      flex: 0 0 auto;
+      overflow:hidden;
+    }
+    .avatar img{
+      width: 100%;
+      height: 100%;
+      border-radius: 14px;
+      object-fit: cover;
+      display:block;
+    }
+
     h1{ margin:0; font-size: 44px; letter-spacing:-0.02em; }
     .subtitle{ margin-top: 6px; color: var(--muted); font-weight: 650; }
 
@@ -114,29 +129,6 @@
     }
     .sep{ color:#999; padding: 0 6px; }
 
-    .avatar{
-      width: 140px;
-      height: 140px;
-      border-radius: 14px;
-      border: 1px solid var(--border);
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      background: #fafafa;
-      color: var(--muted);
-      font-size: 13px;
-      text-align: center;
-      padding: 10px;
-      margin-top: 14px;
-    }
-    .avatar img{
-      width: 100%;
-      height: 100%;
-      border-radius: 14px;
-      object-fit: cover;
-      display:block;
-    }
-
     .bio{
       margin-top: 14px;
       margin-bottom: 0;
@@ -144,7 +136,7 @@
       font-size: 16px;
     }
 
-    /* Icon-only links */
+    /* Icon-only links (LinkedIn + Scholar only) */
     .iconlinks{
       margin-top: 14px;
       display:flex;
@@ -166,14 +158,10 @@
       border-color: var(--border);
       background: #fafafa;
     }
-    .icon{
-      width: 18px;
-      height: 18px;
-      display:inline-block;
-    }
+    .icon{ width: 18px; height: 18px; display:inline-block; }
     .icon svg{ width:18px; height:18px; display:block; }
 
-    /* ===== Right content ===== */
+    /* Right content */
     .section{ padding-top: 18px; }
     .section:first-child{ padding-top: 0; }
     .section h2{
@@ -223,12 +211,19 @@
     .pub-authors{ margin-top: 4px; color: var(--muted); font-size: 14px; }
     .pub-meta{ margin-top: 6px; color: #222; font-size: 14px; }
 
-    /* Media as simple lines */
+    .full-list{
+      margin-top: 10px;
+      font-size: 14px; /* smaller */
+      color: var(--muted);
+    }
+
+    /* Media as simple lines with short descriptions */
     .lines{
       margin: 10px 0 0;
       padding-left: 18px;
     }
-    .lines li{ margin: 8px 0; }
+    .lines li{ margin: 12px 0; }
+    .lines .desc{ color: var(--muted); font-size: 14px; }
 
     .footer{
       margin-top: 28px;
@@ -249,8 +244,20 @@
 
     <!-- LEFT: fixed intro -->
     <aside class="left" aria-label="Intro">
-      <h1>Dan Zhao</h1>
-      <div class="subtitle">AI Research Scientist</div>
+      <div class="topline">
+        <div class="avatar" aria-label="Profile picture placeholder">
+          Add photo<br/>
+          <span class="muted">assets/profile.jpg</span>
+          <!-- If you upload assets/profile.jpg, replace the placeholder content with:
+          <img src="assets/profile.jpg" alt="Dan Zhao profile photo" />
+          -->
+        </div>
+
+        <div>
+          <h1>Dan Zhao</h1>
+          <div class="subtitle">AI Research Scientist</div>
+        </div>
+      </div>
 
       <div class="orgs" aria-label="Organization links">
         <a href="https://www.microsoft.com/applied-sciences/people/danny-zhao" target="_blank" rel="noreferrer">Microsoft</a>
@@ -259,15 +266,6 @@
         <span class="sep">·</span>
         <a href="https://futuretech.mit.edu/team/daniel-zhao" target="_blank" rel="noreferrer">Massachusetts Institute of Technology (MIT)</a>
       </div>
-
-      <!-- PROFILE PICTURE PLACEHOLDER -->
-      <div class="avatar" aria-label="Profile picture placeholder">
-        Add profile photo<br/>
-        <span class="muted">assets/profile.jpg</span>
-      </div>
-      <!-- If you upload a photo to assets/profile.jpg, replace the div above with:
-      <div class="avatar"><img src="assets/profile.jpg" alt="Dan Zhao profile photo" /></div>
-      -->
 
       <p class="bio">
         I am an AI research scientist. I previously worked at
@@ -282,32 +280,19 @@
         (energy-efficient AI), focused on understanding and mitigating the energy impact of AI workloads spanning training through inference and deployment.
       </p>
 
-      <!-- Icon-only links -->
       <div class="iconlinks" aria-label="Profile links">
         <!-- LinkedIn -->
         <a class="iconlink" href="https://www.linkedin.com/in/danzhao0/" target="_blank" rel="noreferrer" title="LinkedIn" aria-label="LinkedIn">
           <span class="icon" aria-hidden="true">
-            <!-- LinkedIn icon -->
             <svg viewBox="0 0 24 24" fill="currentColor">
               <path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1 4.98 2.12 4.98 3.5ZM0.5 8.5H4.5V23.5H0.5V8.5ZM8 8.5H11.8V10.6H11.85C12.38 9.62 13.7 8.6 15.64 8.6C19.73 8.6 20.5 11.05 20.5 14.24V23.5H16.5V15.35C16.5 13.41 16.46 10.92 14.05 10.92C11.61 10.92 11.25 12.8 11.25 15.23V23.5H7.25V8.5H8Z"/>
             </svg>
           </span>
         </a>
 
-        <!-- GitHub -->
-        <a class="iconlink" href="https://github.com/dzai" target="_blank" rel="noreferrer" title="GitHub" aria-label="GitHub">
-          <span class="icon" aria-hidden="true">
-            <!-- GitHub icon -->
-            <svg viewBox="0 0 24 24" fill="currentColor">
-              <path d="M12 .5C5.73.5.75 5.6.75 12c0 5.17 3.44 9.56 8.2 11.12.6.12.82-.27.82-.58v-2.1c-3.34.75-4.04-1.48-4.04-1.48-.54-1.42-1.33-1.8-1.33-1.8-1.09-.77.08-.76.08-.76 1.2.09 1.83 1.27 1.83 1.27 1.07 1.88 2.8 1.34 3.48 1.02.11-.8.42-1.34.76-1.65-2.66-.31-5.46-1.37-5.46-6.1 0-1.35.46-2.46 1.23-3.33-.12-.31-.54-1.58.12-3.29 0 0 1.01-.33 3.3 1.27.96-.28 1.98-.42 3-.42s2.04.14 3 .42c2.28-1.6 3.29-1.27 3.29-1.27.66 1.71.24 2.98.12 3.29.77.87 1.23 1.98 1.23 3.33 0 4.74-2.8 5.78-5.47 6.09.43.38.82 1.13.82 2.29v3.4c0 .31.22.7.83.58 4.76-1.56 8.2-5.95 8.2-11.12C23.25 5.6 18.27.5 12 .5z"/>
-            </svg>
-          </span>
-        </a>
-
-        <!-- Google Scholar (use a simple mortarboard icon) -->
+        <!-- Google Scholar (mortarboard icon) -->
         <a class="iconlink" href="https://scholar.google.com/citations?user=gODFPYIAAAAJ&hl=en" target="_blank" rel="noreferrer" title="Google Scholar" aria-label="Google Scholar">
           <span class="icon" aria-hidden="true">
-            <!-- Mortarboard icon -->
             <svg viewBox="0 0 24 24" fill="currentColor">
               <path d="M12 3L1 9l11 6 9-4.91V17h2V9L12 3zm0 14.2L5 13.27V17c0 2.76 3.13 5 7 5s7-2.24 7-5v-3.73l-7 3.93z"/>
             </svg>
@@ -413,13 +398,34 @@
       <div class="section" id="publications">
         <h2>Selected Publications</h2>
 
+        <!-- Re-ordered per your requested sequence -->
         <div class="pubs">
+
+          <div class="pub">
+            <div class="pub-thumb" aria-label="Publication image placeholder">
+              Add image<br/><span class="muted">assets/pubs/greener-world.jpg</span>
+              <!-- Replace with:
+              <img src="assets/pubs/greener-world.jpg" alt="A Green(er) World for AI thumbnail" />
+              -->
+            </div>
+            <div>
+              <div class="pub-title">
+                <a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=gODFPYIAAAAJ&citation_for_view=gODFPYIAAAAJ:qxL8FJ1GzNcC" target="_blank" rel="noreferrer">
+                  A Green(er) World for AI
+                </a>
+              </div>
+              <div class="pub-authors">
+                Dan Zhao, Nathan C. Frey, Joseph McDonald, Matthew Hubbell, David Bestor, Michael Jones, Andrew Prout, Vijay Gadepally, Siddharth Samsi
+              </div>
+              <div class="pub-meta">
+                Discusses practical directions for reducing AI’s energy footprint across training, inference, systems, and evaluation incentives.
+              </div>
+            </div>
+          </div>
+
           <div class="pub">
             <div class="pub-thumb" aria-label="Publication image placeholder">
               Add image<br/><span class="muted">assets/pubs/words-to-watts.jpg</span>
-              <!-- To use an image, replace the lines above with:
-              <img src="assets/pubs/words-to-watts.jpg" alt="From Words to Watts thumbnail" />
-              -->
             </div>
             <div>
               <div class="pub-title">
@@ -432,6 +438,25 @@
               </div>
               <div class="pub-meta">
                 Benchmarks inference performance and energy costs for LLMs across GPU generations and multi-node settings, with practical deployment tradeoffs.
+              </div>
+            </div>
+          </div>
+
+          <div class="pub">
+            <div class="pub-thumb" aria-label="Publication image placeholder">
+              Add image<br/><span class="muted">assets/pubs/power-capping.jpg</span>
+            </div>
+            <div>
+              <div class="pub-title">
+                <a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=gODFPYIAAAAJ&citation_for_view=gODFPYIAAAAJ:7PzlFSSx8tAC" target="_blank" rel="noreferrer">
+                  Sustainable Supercomputing for AI: GPU Power Capping at HPC Scale
+                </a>
+              </div>
+              <div class="pub-authors">
+                Dan Zhao, Siddharth Samsi, Joseph McDonald, Baolin Li, David Bestor, Michael Jones, Devesh Tiwari, Vijay Gadepally
+              </div>
+              <div class="pub-meta">
+                Studies system-wide effects of GPU power capping at scale, showing energy/thermal reductions with minimal performance impact in key settings.
               </div>
             </div>
           </div>
@@ -476,25 +501,6 @@
 
           <div class="pub">
             <div class="pub-thumb" aria-label="Publication image placeholder">
-              Add image<br/><span class="muted">assets/pubs/power-capping.jpg</span>
-            </div>
-            <div>
-              <div class="pub-title">
-                <a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=gODFPYIAAAAJ&citation_for_view=gODFPYIAAAAJ:7PzlFSSx8tAC" target="_blank" rel="noreferrer">
-                  Sustainable Supercomputing for AI: GPU Power Capping at HPC Scale
-                </a>
-              </div>
-              <div class="pub-authors">
-                Dan Zhao, Siddharth Samsi, Joseph McDonald, Baolin Li, David Bestor, Michael Jones, Devesh Tiwari, Vijay Gadepally
-              </div>
-              <div class="pub-meta">
-                Studies system-wide effects of GPU power capping at scale, showing energy/thermal reductions with minimal performance impact in key settings.
-              </div>
-            </div>
-          </div>
-
-          <div class="pub">
-            <div class="pub-thumb" aria-label="Publication image placeholder">
               Add image<br/><span class="muted">assets/pubs/videowebarena.jpg</span>
             </div>
             <div>
@@ -512,29 +518,10 @@
             </div>
           </div>
 
-          <div class="pub">
-            <div class="pub-thumb" aria-label="Publication image placeholder">
-              Add image<br/><span class="muted">assets/pubs/greener-world.jpg</span>
-            </div>
-            <div>
-              <div class="pub-title">
-                <a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=gODFPYIAAAAJ&citation_for_view=gODFPYIAAAAJ:qxL8FJ1GzNcC" target="_blank" rel="noreferrer">
-                  A Green(er) World for AI
-                </a>
-              </div>
-              <div class="pub-authors">
-                Dan Zhao, Nathan C. Frey, Joseph McDonald, Matthew Hubbell, David Bestor, Michael Jones, Andrew Prout, Vijay Gadepally, Siddharth Samsi
-              </div>
-              <div class="pub-meta">
-                Discusses practical directions for reducing AI’s energy footprint across training, inference, systems, and evaluation incentives.
-              </div>
-            </div>
-          </div>
         </div>
 
-        <p class="muted" style="margin-top:12px;">
-          Full list:
-          <a href="https://scholar.google.com/citations?user=gODFPYIAAAAJ&hl=en" target="_blank" rel="noreferrer">Google Scholar</a>
+        <p class="full-list">
+          Full list: <a href="https://scholar.google.com/citations?user=gODFPYIAAAAJ&hl=en" target="_blank" rel="noreferrer">Google Scholar</a>
         </p>
       </div>
 
@@ -567,16 +554,40 @@
       </div>
 
       <div class="section" id="media">
-        <h2>Media coverage &amp; presentations</h2>
+        <h2>Media Coverage &amp; Presentations</h2>
         <ul class="lines">
-          <li><a href="https://www.youtube.com/watch?v=lQeYRmy8nHQ&t=16s" target="_blank" rel="noreferrer">YouTube interview</a></li>
-          <li><a href="https://www.youtube.com/watch?v=AFeF0UUaKlY&t=51s" target="_blank" rel="noreferrer">YouTube interview</a></li>
-          <li><a href="https://www.microsoft.com/applied-sciences/projects/windows-agent-arena" target="_blank" rel="noreferrer">Windows Agent Arena (Microsoft project page)</a></li>
-          <li><a href="https://news.mynavi.jp/techplus/article/20250502-3272371/" target="_blank" rel="noreferrer">Press coverage (Mynavi Tech+)</a></li>
-          <li><a href="https://www.microsoft.com/en-us/microsoft-copilot/blog/2024/12/05/copilot-vision-now-in-preview-a-new-way-to-browse/" target="_blank" rel="noreferrer">Copilot Vision (Microsoft blog)</a></li>
-          <li><a href="https://slideslive.com/38989947/combining-implicit-explicit-regularization-for-efficient-learning-in-deep-networks?ref=speaker-112395" target="_blank" rel="noreferrer">NeurIPS 2022 presentation (SlidesLive)</a></li>
-          <li><a href="https://dcc.mit.edu/adopt22/" target="_blank" rel="noreferrer">ADOPT ’22</a></li>
-          <li><a href="https://www.mrs.org/meetings-events/annual-meetings/archive/meeting/presentations/view/2024-fall-meeting/2024-fall-meeting-4154893" target="_blank" rel="noreferrer">Materials Research Society 2024 Fall Meeting</a></li>
+          <li>
+            <a href="https://www.youtube.com/watch?v=lQeYRmy8nHQ&t=16s" target="_blank" rel="noreferrer">YouTube interview</a>
+            <div class="desc">Interview appearance and discussion of recent work.</div>
+          </li>
+          <li>
+            <a href="https://www.youtube.com/watch?v=AFeF0UUaKlY&t=51s" target="_blank" rel="noreferrer">YouTube interview</a>
+            <div class="desc">Interview appearance and discussion of research and applications.</div>
+          </li>
+          <li>
+            <a href="https://www.microsoft.com/applied-sciences/projects/windows-agent-arena" target="_blank" rel="noreferrer">Windows Agent Arena (Microsoft project page)</a>
+            <div class="desc">Project and benchmark overview.</div>
+          </li>
+          <li>
+            <a href="https://news.mynavi.jp/techplus/article/20250502-3272371/" target="_blank" rel="noreferrer">Press coverage (Mynavi Tech+)</a>
+            <div class="desc">Article covering related work and context.</div>
+          </li>
+          <li>
+            <a href="https://www.microsoft.com/en-us/microsoft-copilot/blog/2024/12/05/copilot-vision-now-in-preview-a-new-way-to-browse/" target="_blank" rel="noreferrer">Copilot Vision (Microsoft blog)</a>
+            <div class="desc">Announcement / write-up for Copilot Vision preview.</div>
+          </li>
+          <li>
+            <a href="https://slideslive.com/38989947/combining-implicit-explicit-regularization-for-efficient-learning-in-deep-networks?ref=speaker-112395" target="_blank" rel="noreferrer">NeurIPS 2022 presentation (SlidesLive)</a>
+            <div class="desc">Talk recording.</div>
+          </li>
+          <li>
+            <a href="https://dcc.mit.edu/adopt22/" target="_blank" rel="noreferrer">ADOPT ’22</a>
+            <div class="desc">Event listing / presentation information.</div>
+          </li>
+          <li>
+            <a href="https://www.mrs.org/meetings-events/annual-meetings/archive/meeting/presentations/view/2024-fall-meeting/2024-fall-meeting-4154893" target="_blank" rel="noreferrer">Materials Research Society 2024 Fall Meeting</a>
+            <div class="desc">Presentation listing.</div>
+          </li>
         </ul>
       </div>
 
