@@ -5,9 +5,9 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Dan Zhao</title>
 
-  <meta name="description" content="Dan Zhao — AI Research Scientist. Publications, work experience, education, awards, and media coverage." />
+  <meta name="description" content="Dan Zhao — AI Research Scientist. Publications, work experience, education, awards, and media coverage & presentations." />
   <meta property="og:title" content="Dan Zhao" />
-  <meta property="og:description" content="AI Research Scientist. Publications, work experience, education, awards, and media coverage." />
+  <meta property="og:description" content="Dan Zhao — AI Research Scientist." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://dzai.github.io/" />
 
@@ -43,10 +43,10 @@
       --muted:#555;
       --link:#0b57d0;
       --border:#e6e6e6;
-      --max: 1180px;
+      --max: 1240px;
     }
     *{ box-sizing:border-box; }
-    html,body{ margin:0; padding:0; }
+    html,body{ height:100%; margin:0; padding:0; }
     body{
       font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
       color:var(--text);
@@ -56,31 +56,68 @@
     a{ color:var(--link); text-decoration:none; }
     a:hover{ text-decoration:underline; }
 
-    .container{
+    /* ===== Layout: left fixed, right scrollable ===== */
+    .page{
       max-width: var(--max);
       margin: 0 auto;
-      padding: 26px 20px 56px;
+      padding: 24px 18px;
+      display:grid;
+      grid-template-columns: 360px minmax(0, 1fr);
+      gap: 24px;
+      align-items:start;
+      height: 100vh;          /* makes right column scroll within viewport */
+    }
+    @media (max-width: 980px){
+      .page{
+        grid-template-columns: 1fr;
+        height: auto;
+      }
+      .left{
+        position: static;
+        max-height: none;
+      }
+      .right{
+        height: auto;
+        overflow: visible;
+        padding-right: 0;
+      }
     }
 
-    .header{
-      border-bottom: 1px solid var(--border);
-      padding-bottom: 16px;
-      margin-bottom: 18px;
+    .left{
+      position: sticky;
+      top: 18px;
+      align-self: start;
+      max-height: calc(100vh - 36px);
+      overflow: hidden; /* keep left clean */
+      padding-right: 6px;
     }
-    .header-top{
-      display: grid;
-      grid-template-columns: 120px minmax(0, 1fr);
-      gap: 16px;
-      align-items: start;
+
+    .right{
+      height: calc(100vh - 48px);
+      overflow: auto;
+      padding-right: 6px;
     }
-    @media (max-width: 640px){
-      .header-top{ grid-template-columns: 1fr; }
+    .right::-webkit-scrollbar{ width: 10px; }
+    .right::-webkit-scrollbar-thumb{ background: #d7d7d7; border-radius: 12px; }
+    .right::-webkit-scrollbar-track{ background: transparent; }
+
+    /* ===== Left intro block ===== */
+    h1{ margin:0; font-size: 44px; letter-spacing:-0.02em; }
+    .subtitle{ margin-top: 6px; color: var(--muted); font-weight: 650; }
+
+    .orgs{
+      margin-top: 10px;
+      display:flex;
+      flex-wrap:wrap;
+      gap: 8px;
+      align-items:center;
     }
+    .sep{ color:#999; padding: 0 6px; }
 
     .avatar{
-      width: 120px;
-      height: 120px;
-      border-radius: 12px;
+      width: 140px;
+      height: 140px;
+      border-radius: 14px;
       border: 1px solid var(--border);
       display:flex;
       align-items:center;
@@ -90,462 +127,469 @@
       font-size: 13px;
       text-align: center;
       padding: 10px;
+      margin-top: 14px;
     }
     .avatar img{
       width: 100%;
       height: 100%;
-      border-radius: 12px;
+      border-radius: 14px;
       object-fit: cover;
       display:block;
     }
 
-    h1{ margin:0; font-size: 44px; letter-spacing:-0.02em; }
-    .subtitle{ margin-top: 6px; color: var(--muted); font-weight: 650; }
-
-    .orgs{
-      margin-top: 10px;
-      display:flex;
-      flex-wrap:wrap;
-      gap: 8px;
-      align-items: center;
-    }
-    .sep{ color:#999; padding: 0 6px; }
-
     .bio{
       margin-top: 14px;
       margin-bottom: 0;
-      max-width: 105ch;
+      color:#111;
       font-size: 16px;
     }
-    .links{
-      margin-top: 10px;
-      color: var(--muted);
-    }
-    .muted{ color: var(--muted); }
 
+    /* Icon-only links */
+    .iconlinks{
+      margin-top: 14px;
+      display:flex;
+      gap: 12px;
+      align-items:center;
+    }
+    .iconlink{
+      display:inline-flex;
+      align-items:center;
+      gap: 8px;
+      color: var(--muted);
+      font-weight: 600;
+      padding: 8px 10px;
+      border-radius: 10px;
+      border: 1px solid transparent;
+    }
+    .iconlink:hover{
+      text-decoration:none;
+      border-color: var(--border);
+      background: #fafafa;
+    }
+    .icon{
+      width: 18px;
+      height: 18px;
+      display:inline-block;
+    }
+    .icon svg{ width:18px; height:18px; display:block; }
+
+    /* ===== Right content ===== */
     .section{ padding-top: 18px; }
+    .section:first-child{ padding-top: 0; }
     .section h2{
       margin: 0 0 10px;
       font-size: 22px;
       letter-spacing:-0.01em;
     }
+    .muted{ color: var(--muted); }
 
     .bullets{ margin: 10px 0 0; padding-left: 18px; }
-    .bullets li{ margin: 8px 0; }
+    .bullets li{ margin: 10px 0; }
     .bullets .muted{ display:block; margin-top: 2px; font-size: 14px; }
 
-    /* Publications */
+    /* Publications with thumbnail */
     .pubs{ display:flex; flex-direction:column; gap: 14px; margin-top: 10px; }
     .pub{
-      padding: 12px 12px;
+      display:grid;
+      grid-template-columns: 76px minmax(0, 1fr);
+      gap: 12px;
+      padding: 12px;
       border: 1px solid var(--border);
       border-radius: 12px;
-      background: #fff;
+      background:#fff;
+    }
+    .pub-thumb{
+      width: 76px;
+      height: 76px;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      background: #fafafa;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      color: var(--muted);
+      font-size: 12px;
+      text-align:center;
+      padding: 6px;
+      overflow:hidden;
+    }
+    .pub-thumb img{
+      width:100%;
+      height:100%;
+      object-fit: cover;
+      display:block;
     }
     .pub-title{ font-weight: 750; }
     .pub-authors{ margin-top: 4px; color: var(--muted); font-size: 14px; }
     .pub-meta{ margin-top: 6px; color: #222; font-size: 14px; }
 
-    /* Media coverage: 3 per row */
-    .media-grid{
-      display:grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 12px;
-      margin-top: 12px;
+    /* Media as simple lines */
+    .lines{
+      margin: 10px 0 0;
+      padding-left: 18px;
     }
-    @media (max-width: 980px){ .media-grid{ grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-    @media (max-width: 680px){ .media-grid{ grid-template-columns: 1fr; } }
-
-    .media-card{
-      display:block;
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      overflow:hidden;
-      color: inherit;
-      background: #fff;
-    }
-    .media-card:hover{ text-decoration:none; border-color:#cfcfcf; }
-    .media-thumb{
-      width:100%;
-      aspect-ratio: 16 / 9;
-      object-fit: cover;
-      display:block;
-      background:#f4f4f4;
-    }
-    .media-body{ padding: 12px; }
-    .media-title{ font-weight: 750; }
-    .media-meta{ margin-top: 4px; color: var(--muted); font-size: 13px; }
-    .media-desc{ margin-top: 8px; color: var(--muted); font-size: 14px; }
+    .lines li{ margin: 8px 0; }
 
     .footer{
-      margin-top: 34px;
-      padding-top: 16px;
+      margin-top: 28px;
+      padding-top: 14px;
       border-top: 1px solid var(--border);
-      display:flex;
-      justify-content:space-between;
-      gap: 12px;
       color: var(--muted);
       font-size: 14px;
+      display:flex;
+      justify-content:space-between;
+      gap: 10px;
       flex-wrap:wrap;
     }
   </style>
 </head>
 
 <body>
-<main class="container">
+  <div class="page">
 
-  <header class="header" id="top">
-    <div class="header-top">
+    <!-- LEFT: fixed intro -->
+    <aside class="left" aria-label="Intro">
+      <h1>Dan Zhao</h1>
+      <div class="subtitle">AI Research Scientist</div>
+
+      <div class="orgs" aria-label="Organization links">
+        <a href="https://www.microsoft.com/applied-sciences/people/danny-zhao" target="_blank" rel="noreferrer">Microsoft</a>
+        <span class="sep">·</span>
+        <a href="https://engineering.nyu.edu/research-innovation/student-research/vertically-integrated-projects/vip-teams/ai-scientific-research" target="_blank" rel="noreferrer">New York University (NYU)</a>
+        <span class="sep">·</span>
+        <a href="https://futuretech.mit.edu/team/daniel-zhao" target="_blank" rel="noreferrer">Massachusetts Institute of Technology (MIT)</a>
+      </div>
+
       <!-- PROFILE PICTURE PLACEHOLDER -->
       <div class="avatar" aria-label="Profile picture placeholder">
         Add profile photo<br/>
         <span class="muted">assets/profile.jpg</span>
       </div>
-
-      <!-- If you upload a photo to assets/profile.jpg, replace the div above with this:
+      <!-- If you upload a photo to assets/profile.jpg, replace the div above with:
       <div class="avatar"><img src="assets/profile.jpg" alt="Dan Zhao profile photo" /></div>
       -->
 
-      <div>
-        <h1>Dan Zhao</h1>
-        <div class="subtitle">AI Research Scientist</div>
+      <p class="bio">
+        I am an AI research scientist. I previously worked at
+        <a href="https://www.microsoft.com/applied-sciences" target="_blank" rel="noreferrer">Microsoft Applied Sciences</a>,
+        where I developed AI-based experiences for
+        <a href="https://www.microsoft.com/en-us/microsoft-copilot/blog/author/the-copilot-team/" target="_blank" rel="noreferrer">Windows Copilot</a>,
+        <a href="https://www.microsoft.com/applied-sciences/projects/windows-agent-arena" target="_blank" rel="noreferrer">Windows Agent Arena</a>,
+        and
+        <a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=gODFPYIAAAAJ&citation_for_view=gODFPYIAAAAJ:e5wmG9Sq2KIC" target="_blank" rel="noreferrer">WinSpot</a>.
+        During my tenure at MIT Lincoln Laboratory, I helped pioneer
+        <a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=gODFPYIAAAAJ&citation_for_view=gODFPYIAAAAJ:qxL8FJ1GzNcC" target="_blank" rel="noreferrer">green AI</a>
+        (energy-efficient AI), focused on understanding and mitigating the energy impact of AI workloads spanning training through inference and deployment.
+      </p>
 
-        <!-- ORGS IN ONE ROW -->
-        <div class="orgs" aria-label="Organization links">
-          <a href="https://www.microsoft.com/applied-sciences/people/danny-zhao" target="_blank" rel="noreferrer">Microsoft</a>
-          <span class="sep">·</span>
-          <a href="https://engineering.nyu.edu/research-innovation/student-research/vertically-integrated-projects/vip-teams/ai-scientific-research" target="_blank" rel="noreferrer">New York University (NYU)</a>
-          <span class="sep">·</span>
-          <a href="https://futuretech.mit.edu/team/daniel-zhao" target="_blank" rel="noreferrer">Massachusetts Institute of Technology (MIT)</a>
+      <!-- Icon-only links -->
+      <div class="iconlinks" aria-label="Profile links">
+        <!-- LinkedIn -->
+        <a class="iconlink" href="https://www.linkedin.com/in/danzhao0/" target="_blank" rel="noreferrer" title="LinkedIn" aria-label="LinkedIn">
+          <span class="icon" aria-hidden="true">
+            <!-- LinkedIn icon -->
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1 4.98 2.12 4.98 3.5ZM0.5 8.5H4.5V23.5H0.5V8.5ZM8 8.5H11.8V10.6H11.85C12.38 9.62 13.7 8.6 15.64 8.6C19.73 8.6 20.5 11.05 20.5 14.24V23.5H16.5V15.35C16.5 13.41 16.46 10.92 14.05 10.92C11.61 10.92 11.25 12.8 11.25 15.23V23.5H7.25V8.5H8Z"/>
+            </svg>
+          </span>
+        </a>
+
+        <!-- GitHub -->
+        <a class="iconlink" href="https://github.com/dzai" target="_blank" rel="noreferrer" title="GitHub" aria-label="GitHub">
+          <span class="icon" aria-hidden="true">
+            <!-- GitHub icon -->
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 .5C5.73.5.75 5.6.75 12c0 5.17 3.44 9.56 8.2 11.12.6.12.82-.27.82-.58v-2.1c-3.34.75-4.04-1.48-4.04-1.48-.54-1.42-1.33-1.8-1.33-1.8-1.09-.77.08-.76.08-.76 1.2.09 1.83 1.27 1.83 1.27 1.07 1.88 2.8 1.34 3.48 1.02.11-.8.42-1.34.76-1.65-2.66-.31-5.46-1.37-5.46-6.1 0-1.35.46-2.46 1.23-3.33-.12-.31-.54-1.58.12-3.29 0 0 1.01-.33 3.3 1.27.96-.28 1.98-.42 3-.42s2.04.14 3 .42c2.28-1.6 3.29-1.27 3.29-1.27.66 1.71.24 2.98.12 3.29.77.87 1.23 1.98 1.23 3.33 0 4.74-2.8 5.78-5.47 6.09.43.38.82 1.13.82 2.29v3.4c0 .31.22.7.83.58 4.76-1.56 8.2-5.95 8.2-11.12C23.25 5.6 18.27.5 12 .5z"/>
+            </svg>
+          </span>
+        </a>
+
+        <!-- Google Scholar (use a simple mortarboard icon) -->
+        <a class="iconlink" href="https://scholar.google.com/citations?user=gODFPYIAAAAJ&hl=en" target="_blank" rel="noreferrer" title="Google Scholar" aria-label="Google Scholar">
+          <span class="icon" aria-hidden="true">
+            <!-- Mortarboard icon -->
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 3L1 9l11 6 9-4.91V17h2V9L12 3zm0 14.2L5 13.27V17c0 2.76 3.13 5 7 5s7-2.24 7-5v-3.73l-7 3.93z"/>
+            </svg>
+          </span>
+        </a>
+      </div>
+    </aside>
+
+    <!-- RIGHT: scrollable content -->
+    <section class="right" aria-label="Content">
+
+      <div class="section" id="experience">
+        <h2>Work Experience</h2>
+        <ul class="bullets">
+          <li>
+            <strong>Microsoft</strong> — Senior Research Scientist (2024–2025)
+            <span class="muted">
+              <a href="https://www.microsoft.com/en-us/microsoft-copilot/blog/author/the-copilot-team/" target="_blank" rel="noreferrer">Copilot</a>,
+              <a href="https://www.microsoft.com/en-us/microsoft-copilot/blog/2024/12/05/copilot-vision-now-in-preview-a-new-way-to-browse/" target="_blank" rel="noreferrer">Copilot Vision</a>,
+              <a href="https://www.microsoft.com/applied-sciences/projects/windows-agent-arena" target="_blank" rel="noreferrer">Windows Agent Arena</a>,
+              <a href="https://proceedings.iclr.cc/paper_files/paper/2025/hash/5b555804d495321df2e3208cc27f4fbc-Abstract-Conference.html" target="_blank" rel="noreferrer">VideoWebArena</a>,
+              <a href="https://arxiv.org/abs/2503.04730" target="_blank" rel="noreferrer">WinClick</a>,
+              and other agentic models/benchmarks.
+            </span>
+          </li>
+
+          <li>
+            <strong>MIT CSAIL</strong> — Research Scientist (2023–2025)
+            <span class="muted">
+              <a href="https://futuretech.mit.edu/team/daniel-zhao" target="_blank" rel="noreferrer">Affiliated research</a>
+              on AI + economics and supercomputing.
+            </span>
+          </li>
+
+          <li>
+            <strong>SandboxAQ</strong> — AI Fellow in Residence (2023–2024)
+            <span class="muted">
+              AI for
+              <a href="https://iopscience.iop.org/article/10.1088/2632-2153/adcb88" target="_blank" rel="noreferrer">quantum chemistry</a>
+              &amp; battery simulation; LLMs for
+              <a href="https://neurips.cc/virtual/2023/84460" target="_blank" rel="noreferrer">security</a>/<span>cryptography</span>;
+              large quantitative models; agents for hypothesis generation and experiment design.
+            </span>
+          </li>
+
+          <li>
+            <strong>AI for Scientific Research</strong> — AI Research Advisor (2022–2024)
+            <span class="muted">
+              Advised/volunteered on
+              <a href="https://www.aifsr.com/about-us/team" target="_blank" rel="noreferrer">applied research projects</a>
+              (x-ray crystallography, imaging analysis, multi-modal sensor fusion) across multiple institutions.
+            </span>
+          </li>
+
+          <li>
+            <strong>Twitter</strong> — Senior Applied Scientist (2022–2023)
+            <span class="muted">LLMs for social graph analysis; recommendation systems; viral post detection.</span>
+          </li>
+
+          <li>
+            <strong>Genentech</strong> — Visiting Researcher (2022–2023)
+            <span class="muted">AI for drug discovery; parallelization and GPU support for pharmacokinetic ODE solvers.</span>
+          </li>
+
+          <li>
+            <strong>NASA Jet Propulsion Laboratory (JPL)</strong> — Visiting Researcher (2022–2023)
+            <span class="muted">Quantum computing applications.</span>
+          </li>
+
+          <li>
+            <strong>MIT Lincoln Laboratory</strong> — Member of Technical Staff, Senior Applied Scientist (2021–2022)
+            <span class="muted">
+              Selected work:
+              <a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=gODFPYIAAAAJ&citation_for_view=gODFPYIAAAAJ:QIV2ME_5wuYC" target="_blank" rel="noreferrer">LLM inference energy benchmarking</a>,
+              <a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=gODFPYIAAAAJ&citation_for_view=gODFPYIAAAAJ:7PzlFSSx8tAC" target="_blank" rel="noreferrer">GPU power capping at scale</a>,
+              <a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=gODFPYIAAAAJ&citation_for_view=gODFPYIAAAAJ:mVmsd5A6BfQC" target="_blank" rel="noreferrer">paper</a>,
+              <a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=gODFPYIAAAAJ&citation_for_view=gODFPYIAAAAJ:9ZlFYXVOiuMC" target="_blank" rel="noreferrer">paper</a>.
+            </span>
+          </li>
+
+          <li>
+            <strong>Yale University</strong> — Graduate Student &amp; Researcher (2018–2020)
+            <span class="muted">Behavioral economics, mechanism design, market design, causal inference.</span>
+          </li>
+
+          <li>
+            <strong>BlackRock</strong> — Senior Associate, Markets &amp; Analytics (2017–2018)
+            <span class="muted">Financial Markets Advisory (FMA).</span>
+          </li>
+
+          <li>
+            <strong>Deutsche Bank</strong> — Associate (2015–2017)
+            <span class="muted">Risk Methodology &amp; Risk Analytics.</span>
+          </li>
+
+          <li>
+            <strong>Federal Reserve Bank of Boston</strong> — Strategy &amp; Operations Associate (2014–2015)
+            <span class="muted">Macroeconomic forecasting, bank stress test design, alternative data and model forecasts.</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="section" id="publications">
+        <h2>Selected Publications</h2>
+
+        <div class="pubs">
+          <div class="pub">
+            <div class="pub-thumb" aria-label="Publication image placeholder">
+              Add image<br/><span class="muted">assets/pubs/words-to-watts.jpg</span>
+              <!-- To use an image, replace the lines above with:
+              <img src="assets/pubs/words-to-watts.jpg" alt="From Words to Watts thumbnail" />
+              -->
+            </div>
+            <div>
+              <div class="pub-title">
+                <a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=gODFPYIAAAAJ&citation_for_view=gODFPYIAAAAJ:QIV2ME_5wuYC" target="_blank" rel="noreferrer">
+                  From Words to Watts: Benchmarking the Energy Costs of Large Language Model Inference
+                </a>
+              </div>
+              <div class="pub-authors">
+                Siddharth Samsi, Dan Zhao, Joseph McDonald, Baolin Li, Adam Michaleas, Michael Jones, William Bergeron, Jeremy Kepner, Devesh Tiwari, Vijay Gadepally
+              </div>
+              <div class="pub-meta">
+                Benchmarks inference performance and energy costs for LLMs across GPU generations and multi-node settings, with practical deployment tradeoffs.
+              </div>
+            </div>
+          </div>
+
+          <div class="pub">
+            <div class="pub-thumb" aria-label="Publication image placeholder">
+              Add image<br/><span class="muted">assets/pubs/windows-agent-arena.jpg</span>
+            </div>
+            <div>
+              <div class="pub-title">
+                <a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=gODFPYIAAAAJ&citation_for_view=gODFPYIAAAAJ:hFOr9nPyWt4C" target="_blank" rel="noreferrer">
+                  Windows Agent Arena: Evaluating Multi-modal OS Agents at Scale
+                </a>
+              </div>
+              <div class="pub-authors">
+                Rogerio Bonatti, Dan Zhao, Francesco Bonacci, Dillon Dupont, Sara Abdali, Yinheng Li, Yadong Lu, Justin Wagle, Kazuhito Koishida, Arthur Bucker, Lawrence Keunho Jang, Zheng Hui
+              </div>
+              <div class="pub-meta">
+                Introduces a scalable benchmark for multimodal agents operating in a Windows OS environment, plus analysis of agent behavior and failure modes.
+              </div>
+            </div>
+          </div>
+
+          <div class="pub">
+            <div class="pub-thumb" aria-label="Publication image placeholder">
+              Add image<br/><span class="muted">assets/pubs/layer-by-layer.jpg</span>
+            </div>
+            <div>
+              <div class="pub-title">
+                <a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=gODFPYIAAAAJ&citation_for_view=gODFPYIAAAAJ:HDshCWvjkbEC" target="_blank" rel="noreferrer">
+                  Layer by Layer: Uncovering Hidden Representations in Language Models
+                </a>
+              </div>
+              <div class="pub-authors">
+                Oscar Skean, Md Rifat Arefin, Dan Zhao, Niket Patel, Jalal Naghiyev, Yann LeCun, Ravid Shwartz-Ziv
+              </div>
+              <div class="pub-meta">
+                Shows intermediate layers can encode strong representations; introduces analysis tools/metrics for representation quality across layers.
+              </div>
+            </div>
+          </div>
+
+          <div class="pub">
+            <div class="pub-thumb" aria-label="Publication image placeholder">
+              Add image<br/><span class="muted">assets/pubs/power-capping.jpg</span>
+            </div>
+            <div>
+              <div class="pub-title">
+                <a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=gODFPYIAAAAJ&citation_for_view=gODFPYIAAAAJ:7PzlFSSx8tAC" target="_blank" rel="noreferrer">
+                  Sustainable Supercomputing for AI: GPU Power Capping at HPC Scale
+                </a>
+              </div>
+              <div class="pub-authors">
+                Dan Zhao, Siddharth Samsi, Joseph McDonald, Baolin Li, David Bestor, Michael Jones, Devesh Tiwari, Vijay Gadepally
+              </div>
+              <div class="pub-meta">
+                Studies system-wide effects of GPU power capping at scale, showing energy/thermal reductions with minimal performance impact in key settings.
+              </div>
+            </div>
+          </div>
+
+          <div class="pub">
+            <div class="pub-thumb" aria-label="Publication image placeholder">
+              Add image<br/><span class="muted">assets/pubs/videowebarena.jpg</span>
+            </div>
+            <div>
+              <div class="pub-title">
+                <a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=gODFPYIAAAAJ&citation_for_view=gODFPYIAAAAJ:-f6ydRqryjwC" target="_blank" rel="noreferrer">
+                  VideoWebArena: Evaluating Long Context Multimodal Agents with Video Understanding Web Tasks
+                </a>
+              </div>
+              <div class="pub-authors">
+                Lawrence Jang, Yinheng Li, Dan Zhao, Charles Ding, Justin Lin, Paul Pu Liang, Rogerio Bonatti, Kazuhito Koishida
+              </div>
+              <div class="pub-meta">
+                Introduces a benchmark of web-agent tasks grounded in long video tutorials to test long-context video understanding for agents.
+              </div>
+            </div>
+          </div>
+
+          <div class="pub">
+            <div class="pub-thumb" aria-label="Publication image placeholder">
+              Add image<br/><span class="muted">assets/pubs/greener-world.jpg</span>
+            </div>
+            <div>
+              <div class="pub-title">
+                <a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=gODFPYIAAAAJ&citation_for_view=gODFPYIAAAAJ:qxL8FJ1GzNcC" target="_blank" rel="noreferrer">
+                  A Green(er) World for AI
+                </a>
+              </div>
+              <div class="pub-authors">
+                Dan Zhao, Nathan C. Frey, Joseph McDonald, Matthew Hubbell, David Bestor, Michael Jones, Andrew Prout, Vijay Gadepally, Siddharth Samsi
+              </div>
+              <div class="pub-meta">
+                Discusses practical directions for reducing AI’s energy footprint across training, inference, systems, and evaluation incentives.
+              </div>
+            </div>
+          </div>
         </div>
 
-        <p class="bio">
-          I am an AI research scientist. I previously worked at
-          <a href="https://www.microsoft.com/applied-sciences" target="_blank" rel="noreferrer">Microsoft Applied Sciences</a>,
-          where I developed AI-based experiences for
-          <a href="https://www.microsoft.com/en-us/microsoft-copilot/blog/author/the-copilot-team/" target="_blank" rel="noreferrer">Windows Copilot</a>,
-          <a href="https://www.microsoft.com/applied-sciences/projects/windows-agent-arena" target="_blank" rel="noreferrer">Windows Agent Arena</a>,
-          and
-          <a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=gODFPYIAAAAJ&citation_for_view=gODFPYIAAAAJ:e5wmG9Sq2KIC" target="_blank" rel="noreferrer">WinSpot</a>.
-          During my tenure at MIT Lincoln Laboratory, I helped pioneer
-          <a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=gODFPYIAAAAJ&citation_for_view=gODFPYIAAAAJ:qxL8FJ1GzNcC" target="_blank" rel="noreferrer">green AI</a>
-          (energy-efficient AI), focused on understanding and mitigating the energy impact of AI workloads spanning training through inference and deployment.
-        </p>
-
-        <p class="links">
+        <p class="muted" style="margin-top:12px;">
+          Full list:
           <a href="https://scholar.google.com/citations?user=gODFPYIAAAAJ&hl=en" target="_blank" rel="noreferrer">Google Scholar</a>
-          <span class="sep">·</span>
-          <a href="https://www.linkedin.com/in/danzhao0/" target="_blank" rel="noreferrer">LinkedIn</a>
         </p>
       </div>
-    </div>
-  </header>
 
-  <section class="section" id="experience">
-    <h2>Work Experience</h2>
-    <ul class="bullets">
-      <li>
-        <strong>Microsoft</strong> — Senior Research Scientist (2024–2025)
-        <span class="muted">
-          <a href="https://www.microsoft.com/en-us/microsoft-copilot/blog/author/the-copilot-team/" target="_blank" rel="noreferrer">Copilot</a>,
-          <a href="https://www.microsoft.com/en-us/microsoft-copilot/blog/2024/12/05/copilot-vision-now-in-preview-a-new-way-to-browse/" target="_blank" rel="noreferrer">Copilot Vision</a>,
-          <a href="https://www.microsoft.com/applied-sciences/projects/windows-agent-arena" target="_blank" rel="noreferrer">Windows Agent Arena</a>,
-          <a href="https://proceedings.iclr.cc/paper_files/paper/2025/hash/5b555804d495321df2e3208cc27f4fbc-Abstract-Conference.html" target="_blank" rel="noreferrer">VideoWebArena</a>,
-          <a href="https://arxiv.org/abs/2503.04730" target="_blank" rel="noreferrer">WinClick</a>,
-          and other agentic models/benchmarks.
-        </span>
-      </li>
-
-      <li>
-        <strong>MIT CSAIL</strong> — Research Scientist (2023–2025)
-        <span class="muted">
-          <a href="https://futuretech.mit.edu/team/daniel-zhao" target="_blank" rel="noreferrer">Affiliated research</a>
-          on AI + economics and supercomputing.
-        </span>
-      </li>
-
-      <li>
-        <strong>SandboxAQ</strong> — AI Fellow in Residence (2023–2024)
-        <span class="muted">
-          AI for
-          <a href="https://iopscience.iop.org/article/10.1088/2632-2153/adcb88" target="_blank" rel="noreferrer">quantum chemistry</a>
-          &amp; battery simulation; LLMs for
-          <a href="https://neurips.cc/virtual/2023/84460" target="_blank" rel="noreferrer">security</a>/<span>cryptography</span>;
-          large quantitative models; agents for hypothesis generation and experiment design.
-        </span>
-      </li>
-
-      <li>
-        <strong>
-          <a href="https://www.aifsr.com/about-us/team" target="_blank" rel="noreferrer">AI for Scientific Research</a>
-        </strong>
-        — AI Research Advisor (2022–2024)
-        <span class="muted">Advised/volunteered on applied research projects (x-ray crystallography, imaging analysis, multi-modal sensor fusion) across multiple institutions.</span>
-      </li>
-
-      <li>
-        <strong>Twitter</strong> — Senior Applied Scientist (2022–2023)
-        <span class="muted">LLMs for social graph analysis; recommendation systems; viral post detection.</span>
-      </li>
-
-      <li>
-        <strong>Genentech</strong> — Visiting Researcher (2022–2023)
-        <span class="muted">AI for drug discovery; parallelization and GPU support for pharmacokinetic ODE solvers.</span>
-      </li>
-
-      <li>
-        <strong>NASA Jet Propulsion Laboratory (JPL)</strong> — Visiting Researcher (2022–2023)
-        <span class="muted">Quantum computing applications.</span>
-      </li>
-
-      <li>
-        <strong>MIT Lincoln Laboratory</strong> — Member of Technical Staff, Senior Applied Scientist (2021–2022)
-        <span class="muted">
-          Selected work:
-          <a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=gODFPYIAAAAJ&citation_for_view=gODFPYIAAAAJ:QIV2ME_5wuYC" target="_blank" rel="noreferrer">LLM inference energy benchmarking</a>,
-          <a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=gODFPYIAAAAJ&citation_for_view=gODFPYIAAAAJ:7PzlFSSx8tAC" target="_blank" rel="noreferrer">GPU power capping at scale</a>,
-          <a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=gODFPYIAAAAJ&citation_for_view=gODFPYIAAAAJ:mVmsd5A6BfQC" target="_blank" rel="noreferrer">paper</a>,
-          <a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=gODFPYIAAAAJ&citation_for_view=gODFPYIAAAAJ:9ZlFYXVOiuMC" target="_blank" rel="noreferrer">paper</a>.
-        </span>
-      </li>
-
-      <li>
-        <strong>Yale University</strong> — Graduate Student &amp; Researcher (2018–2020)
-        <span class="muted">Behavioral economics, mechanism design, market design, causal inference.</span>
-      </li>
-
-      <li>
-        <strong>BlackRock</strong> — Senior Associate, Markets &amp; Analytics (2017–2018)
-        <span class="muted">Financial Markets Advisory (FMA).</span>
-      </li>
-
-      <li>
-        <strong>Deutsche Bank</strong> — Associate (2015–2017)
-        <span class="muted">Risk Methodology &amp; Risk Analytics.</span>
-      </li>
-
-      <li>
-        <strong>Federal Reserve Bank of Boston</strong> — Strategy &amp; Operations Associate (2014–2015)
-        <span class="muted">Macroeconomic forecasting, bank stress test design, alternative data and model forecasts.</span>
-      </li>
-    </ul>
-  </section>
-
-  <section class="section" id="publications">
-    <h2>Selected Publications</h2>
-
-    <div class="pubs">
-      <div class="pub">
-        <div class="pub-title">
-          <a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=gODFPYIAAAAJ&citation_for_view=gODFPYIAAAAJ:QIV2ME_5wuYC" target="_blank" rel="noreferrer">
-            From Words to Watts: Benchmarking the Energy Costs of Large Language Model Inference
-          </a>
-        </div>
-        <div class="pub-authors">
-          Siddharth Samsi, Dan Zhao, Joseph McDonald, Baolin Li, Adam Michaleas, Michael Jones, William Bergeron, Jeremy Kepner, Devesh Tiwari, Vijay Gadepally
-        </div>
-        <div class="pub-meta">
-          Benchmarks inference performance and energy costs for LLMs across GPU generations and multi-node settings, with practical deployment tradeoffs.
-        </div>
+      <div class="section" id="education">
+        <h2>Education</h2>
+        <ul class="bullets">
+          <li><strong>New York University</strong> — MS, Computer Science (2021–2026) <span class="muted">Concentration in artificial intelligence.</span></li>
+          <li><strong>Yale University</strong> — PhD, Economics (2018–2020) <span class="muted">ABD (incomplete).</span></li>
+          <li><strong>University of Oxford</strong> — Philosophy, Politics, Economics (2012–2013) <span class="muted">Grade: First Class with Honors · Visiting Scholar.</span></li>
+          <li><strong>Williams College</strong> — BA, Economics (2010–2014)</li>
+        </ul>
       </div>
 
-      <div class="pub">
-        <div class="pub-title">
-          <a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=gODFPYIAAAAJ&citation_for_view=gODFPYIAAAAJ:hFOr9nPyWt4C" target="_blank" rel="noreferrer">
-            Windows Agent Arena: Evaluating Multi-modal OS Agents at Scale
-          </a>
-        </div>
-        <div class="pub-authors">
-          Rogerio Bonatti, Dan Zhao, Francesco Bonacci, Dillon Dupont, Sara Abdali, Yinheng Li, Yadong Lu, Justin Wagle, Kazuhito Koishida, Arthur Bucker, Lawrence Keunho Jang, Zheng Hui
-        </div>
-        <div class="pub-meta">
-          Introduces a scalable benchmark for multimodal agents operating in a Windows OS environment, plus analysis of agent behavior and failure modes.
-        </div>
+      <div class="section" id="awards">
+        <h2>Awards</h2>
+        <ul class="bullets">
+          <li><strong>ICML 2025 Oral</strong> — <a href="https://icml.cc/virtual/2025/poster/45028" target="_blank" rel="noreferrer">ICML page</a></li>
+          <li><strong>Yale University Cowles Foundation Fellowship</strong> (Sep 2018)</li>
+          <li><strong>2018 BlackRock Hackathon (HACK:BLK)</strong> — 1st place, Human Analytics &amp; People Operations Category (Apr 2018)</li>
+          <li><strong>NSF Graduate Research Fellowship</strong> (Apr 2018)</li>
+          <li><strong>Magna Cum Laude, Williams College</strong> (Jun 2014)</li>
+          <li><strong>John B. McDowell 1980 Scholarship</strong> (Feb 2014)</li>
+          <li><strong>Phi Beta Kappa</strong> (Sep 2013)</li>
+          <li><strong>First Class Honours with Distinction (in Economics)</strong> (Apr 2013)</li>
+          <li><strong>Lathers Prize in Political Science</strong> (May 2012)</li>
+          <li><strong>Cornelius Lansing Hays Jr. Scholarship</strong> (Feb 2012)</li>
+          <li><strong>S. Birmingham Class of 1950 Scholarship</strong> (Feb 2011)</li>
+          <li><strong>U.S. Pan Asian American Chamber of Commerce Scholarship</strong> (Oct 2010)</li>
+        </ul>
       </div>
 
-      <div class="pub">
-        <div class="pub-title">
-          <a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=gODFPYIAAAAJ&citation_for_view=gODFPYIAAAAJ:HDshCWvjkbEC" target="_blank" rel="noreferrer">
-            Layer by Layer: Uncovering Hidden Representations in Language Models
-          </a>
-        </div>
-        <div class="pub-authors">
-          Oscar Skean, Md Rifat Arefin, Dan Zhao, Niket Patel, Jalal Naghiyev, Yann LeCun, Ravid Shwartz-Ziv
-        </div>
-        <div class="pub-meta">
-          Shows intermediate layers can encode strong representations; introduces analysis tools/metrics for representation quality across layers.
-        </div>
+      <div class="section" id="media">
+        <h2>Media coverage &amp; presentations</h2>
+        <ul class="lines">
+          <li><a href="https://www.youtube.com/watch?v=lQeYRmy8nHQ&t=16s" target="_blank" rel="noreferrer">YouTube interview</a></li>
+          <li><a href="https://www.youtube.com/watch?v=AFeF0UUaKlY&t=51s" target="_blank" rel="noreferrer">YouTube interview</a></li>
+          <li><a href="https://www.microsoft.com/applied-sciences/projects/windows-agent-arena" target="_blank" rel="noreferrer">Windows Agent Arena (Microsoft project page)</a></li>
+          <li><a href="https://news.mynavi.jp/techplus/article/20250502-3272371/" target="_blank" rel="noreferrer">Press coverage (Mynavi Tech+)</a></li>
+          <li><a href="https://www.microsoft.com/en-us/microsoft-copilot/blog/2024/12/05/copilot-vision-now-in-preview-a-new-way-to-browse/" target="_blank" rel="noreferrer">Copilot Vision (Microsoft blog)</a></li>
+          <li><a href="https://slideslive.com/38989947/combining-implicit-explicit-regularization-for-efficient-learning-in-deep-networks?ref=speaker-112395" target="_blank" rel="noreferrer">NeurIPS 2022 presentation (SlidesLive)</a></li>
+          <li><a href="https://dcc.mit.edu/adopt22/" target="_blank" rel="noreferrer">ADOPT ’22</a></li>
+          <li><a href="https://www.mrs.org/meetings-events/annual-meetings/archive/meeting/presentations/view/2024-fall-meeting/2024-fall-meeting-4154893" target="_blank" rel="noreferrer">Materials Research Society 2024 Fall Meeting</a></li>
+        </ul>
       </div>
 
-      <div class="pub">
-        <div class="pub-title">
-          <a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=gODFPYIAAAAJ&citation_for_view=gODFPYIAAAAJ:7PzlFSSx8tAC" target="_blank" rel="noreferrer">
-            Sustainable Supercomputing for AI: GPU Power Capping at HPC Scale
-          </a>
-        </div>
-        <div class="pub-authors">
-          Dan Zhao, Siddharth Samsi, Joseph McDonald, Baolin Li, David Bestor, Michael Jones, Devesh Tiwari, Vijay Gadepally
-        </div>
-        <div class="pub-meta">
-          Studies system-wide effects of GPU power capping at scale, showing energy/thermal reductions with minimal performance impact in key settings.
-        </div>
-      </div>
+      <footer class="footer">
+        <div>© <span id="y"></span> Dan Zhao</div>
+        <div class="muted">Updated periodically.</div>
+      </footer>
 
-      <div class="pub">
-        <div class="pub-title">
-          <a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=gODFPYIAAAAJ&citation_for_view=gODFPYIAAAAJ:-f6ydRqryjwC" target="_blank" rel="noreferrer">
-            VideoWebArena: Evaluating Long Context Multimodal Agents with Video Understanding Web Tasks
-          </a>
-        </div>
-        <div class="pub-authors">
-          Lawrence Jang, Yinheng Li, Dan Zhao, Charles Ding, Justin Lin, Paul Pu Liang, Rogerio Bonatti, Kazuhito Koishida
-        </div>
-        <div class="pub-meta">
-          Introduces a benchmark of web-agent tasks grounded in long video tutorials to test long-context video understanding for agents.
-        </div>
-      </div>
+    </section>
+  </div>
 
-      <div class="pub">
-        <div class="pub-title">
-          <a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=gODFPYIAAAAJ&citation_for_view=gODFPYIAAAAJ:qxL8FJ1GzNcC" target="_blank" rel="noreferrer">
-            A Green(er) World for AI
-          </a>
-        </div>
-        <div class="pub-authors">
-          Dan Zhao, Nathan C. Frey, Joseph McDonald, Matthew Hubbell, David Bestor, Michael Jones, Andrew Prout, Vijay Gadepally, Siddharth Samsi
-        </div>
-        <div class="pub-meta">
-          Discusses practical directions for reducing AI’s energy footprint across training, inference, systems, and evaluation incentives.
-        </div>
-      </div>
-    </div>
-
-    <p class="muted" style="margin-top:12px;">
-      Full list:
-      <a href="https://scholar.google.com/citations?user=gODFPYIAAAAJ&hl=en" target="_blank" rel="noreferrer">Google Scholar</a>
-    </p>
-  </section>
-
-  <section class="section" id="education">
-    <h2>Education</h2>
-    <ul class="bullets">
-      <li><strong>New York University</strong> — MS, Computer Science (2021–2026) <span class="muted">Concentration in artificial intelligence.</span></li>
-      <li><strong>Yale University</strong> — PhD, Economics (2018–2020) <span class="muted">ABD (incomplete).</span></li>
-      <li><strong>University of Oxford</strong> — Philosophy, Politics, Economics (2012–2013) <span class="muted">Grade: First Class with Honors · Visiting Scholar.</span></li>
-      <li><strong>Williams College</strong> — BA, Economics (2010–2014)</li>
-    </ul>
-  </section>
-
-  <section class="section" id="awards">
-    <h2>Awards</h2>
-    <ul class="bullets">
-      <li><strong>ICML 2025 Oral</strong> — <a href="https://icml.cc/virtual/2025/poster/45028" target="_blank" rel="noreferrer">ICML page</a></li>
-      <li><strong>Yale University Cowles Foundation Fellowship</strong> (Sep 2018)</li>
-      <li><strong>2018 BlackRock Hackathon (HACK:BLK)</strong> — 1st place, Human Analytics &amp; People Operations Category (Apr 2018)</li>
-      <li><strong>NSF Graduate Research Fellowship</strong> (Apr 2018)</li>
-
-      <li><strong>Magna Cum Laude, Williams College</strong> (Jun 2014)</li>
-      <li><strong>John B. McDowell 1980 Scholarship</strong> (Feb 2014)</li>
-      <li><strong>Phi Beta Kappa</strong> (Sep 2013)</li>
-      <li><strong>First Class Honours with Distinction (in Economics)</strong> (Apr 2013)</li>
-      <li><strong>Lathers Prize in Political Science</strong> (May 2012)</li>
-      <li><strong>Cornelius Lansing Hays Jr. Scholarship</strong> (Feb 2012)</li>
-      <li><strong>S. Birmingham Class of 1950 Scholarship</strong> (Feb 2011)</li>
-      <li><strong>U.S. Pan Asian American Chamber of Commerce Scholarship</strong> (Oct 2010)</li>
-    </ul>
-  </section>
-
-  <section class="section" id="media">
-    <h2>Media coverage &amp; presentations</h2>
-
-    <div class="media-grid">
-      <a class="media-card" href="https://www.youtube.com/watch?v=lQeYRmy8nHQ&t=16s" target="_blank" rel="noreferrer">
-        <img class="media-thumb" src="https://img.youtube.com/vi/lQeYRmy8nHQ/hqdefault.jpg" alt="YouTube thumbnail" />
-        <div class="media-body">
-          <div class="media-title">YouTube Interview</div>
-          <div class="media-meta">YouTube</div>
-          <div class="media-desc">Interview appearance.</div>
-        </div>
-      </a>
-
-      <a class="media-card" href="https://www.youtube.com/watch?v=AFeF0UUaKlY&t=51s" target="_blank" rel="noreferrer">
-        <img class="media-thumb" src="https://img.youtube.com/vi/AFeF0UUaKlY/hqdefault.jpg" alt="YouTube thumbnail" />
-        <div class="media-body">
-          <div class="media-title">YouTube Interview</div>
-          <div class="media-meta">YouTube</div>
-          <div class="media-desc">Interview appearance.</div>
-        </div>
-      </a>
-
-      <a class="media-card" href="https://www.microsoft.com/applied-sciences/projects/windows-agent-arena" target="_blank" rel="noreferrer">
-        <img class="media-thumb" src="https://www.google.com/s2/favicons?domain=microsoft.com&sz=256" alt="Microsoft preview" />
-        <div class="media-body">
-          <div class="media-title">Windows Agent Arena</div>
-          <div class="media-meta">Microsoft Applied Sciences</div>
-          <div class="media-desc">Project page.</div>
-        </div>
-      </a>
-
-      <a class="media-card" href="https://news.mynavi.jp/techplus/article/20250502-3272371/" target="_blank" rel="noreferrer">
-        <img class="media-thumb" src="https://www.google.com/s2/favicons?domain=news.mynavi.jp&sz=256" alt="Mynavi preview" />
-        <div class="media-body">
-          <div class="media-title">Press coverage</div>
-          <div class="media-meta">Mynavi Tech+</div>
-          <div class="media-desc">Article.</div>
-        </div>
-      </a>
-
-      <a class="media-card" href="https://www.microsoft.com/en-us/microsoft-copilot/blog/2024/12/05/copilot-vision-now-in-preview-a-new-way-to-browse/" target="_blank" rel="noreferrer">
-        <img class="media-thumb" src="https://www.google.com/s2/favicons?domain=microsoft.com&sz=256" alt="Microsoft blog preview" />
-        <div class="media-body">
-          <div class="media-title">Copilot Vision (Preview)</div>
-          <div class="media-meta">Microsoft Copilot Blog</div>
-          <div class="media-desc">Announcement / write-up.</div>
-        </div>
-      </a>
-
-      <a class="media-card" href="https://slideslive.com/38989947/combining-implicit-explicit-regularization-for-efficient-learning-in-deep-networks?ref=speaker-112395" target="_blank" rel="noreferrer">
-        <img class="media-thumb" src="https://www.google.com/s2/favicons?domain=slideslive.com&sz=256" alt="SlidesLive preview" />
-        <div class="media-body">
-          <div class="media-title">NeurIPS 2022 presentation</div>
-          <div class="media-meta">SlidesLive</div>
-          <div class="media-desc">Talk recording.</div>
-        </div>
-      </a>
-
-      <a class="media-card" href="https://dcc.mit.edu/adopt22/" target="_blank" rel="noreferrer">
-        <img class="media-thumb" src="https://www.google.com/s2/favicons?domain=dcc.mit.edu&sz=256" alt="MIT DCC preview" />
-        <div class="media-body">
-          <div class="media-title">ADOPT ’22</div>
-          <div class="media-meta">MIT DCC</div>
-          <div class="media-desc">Event / presentation.</div>
-        </div>
-      </a>
-
-      <a class="media-card" href="https://www.mrs.org/meetings-events/annual-meetings/archive/meeting/presentations/view/2024-fall-meeting/2024-fall-meeting-4154893" target="_blank" rel="noreferrer">
-        <img class="media-thumb" src="https://www.google.com/s2/favicons?domain=mrs.org&sz=256" alt="MRS preview" />
-        <div class="media-body">
-          <div class="media-title">MRS 2024 Fall Meeting</div>
-          <div class="media-meta">Materials Research Society</div>
-          <div class="media-desc">Presentation listing.</div>
-        </div>
-      </a>
-    </div>
-  </section>
-
-  <footer class="footer">
-    <div>© <span id="y"></span> Dan Zhao</div>
-    <div>
-      <a href="https://www.linkedin.com/in/danzhao0/" target="_blank" rel="noreferrer">LinkedIn</a>
-      <span class="sep">·</span>
-      <a href="https://scholar.google.com/citations?user=gODFPYIAAAAJ&hl=en" target="_blank" rel="noreferrer">Google Scholar</a>
-    </div>
-  </footer>
-
-</main>
-
-<script>
-  document.getElementById("y").textContent = new Date().getFullYear();
-</script>
+  <script>
+    document.getElementById("y").textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
