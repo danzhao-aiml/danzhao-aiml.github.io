@@ -124,43 +124,42 @@
       font-size: 16px;
     }
 
-    /* Icon-only links (LinkedIn + Scholar) */
+    /* Icon-only links (Email + LinkedIn + Scholar) */
     .iconlinks{
       margin-top: 14px;
-      display:flex;
+      display: flex;
       gap: 12px;
-      align-items:center;
+      align-items: center;
       flex-wrap: wrap;
     }
+
     .iconlink{
-      display:inline-flex;
-      align-items:center;
-      gap: 8px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
       color: var(--muted);
-      font-weight: 600;
       padding: 8px 10px;
       border-radius: 10px;
       border: 1px solid transparent;
     }
+
     .iconlink:hover{
-      text-decoration:none;
+      text-decoration: none;
       border-color: var(--border);
       background: #fafafa;
     }
-    .icon{ width: 18px; height: 18px; display:inline-block; }
-    .icon svg{ width:18px; height:18px; display:block; }
 
-    /* Email (visible + entity friendly) */
-    .email{
-      margin-top: 12px;
-      display:flex;
-      align-items:center;
-      gap: 8px;
-      color: var(--muted);
-      font-weight: 650;
+    .icon{
+      width: 18px;
+      height: 18px;
+      display: inline-block;
     }
-    .email a{ color: var(--text); }
-    .email a:hover{ text-decoration: underline; }
+
+    .icon svg{
+      width: 18px;
+      height: 18px;
+      display: block;
+    }
 
     /* Logos */
     .logo{
@@ -294,11 +293,6 @@
         <a href="https://futuretech.mit.edu/team/daniel-zhao" target="_blank" rel="noreferrer">MIT</a>
       </div>
 
-      <!-- Email (visible + helps entity recognition) -->
-      <div class="email" aria-label="Email">
-        <span aria-hidden="true">✉️</span>
-        <a href="mailto:danzhao.aiml@gmail.com" itemprop="email">danzhao.aiml@gmail.com</a>
-      </div>
 
       <p class="bio">
         I am an AI research scientist. I previously worked at
@@ -337,110 +331,127 @@
     <!-- RIGHT: expandable sections (no internal scroll) -->
     <section class="right" aria-label="Content">
 
-      <details class="section" id="experience" open>
-        <summary>
-          <div class="section-title">Work Experience</div>
-          <span class="chev" aria-hidden="true"></span>
-        </summary>
-        <div class="section-body">
-          <ul class="bullets">
-            <li>
-              <img class="logo" src="assets/Microsoft.png" alt="Microsoft logo" />
-              <strong>Microsoft</strong> — Senior Research Scientist (2024–2025)
-              <span class="muted">
-                <a href="https://www.microsoft.com/en-us/microsoft-copilot/blog/author/the-copilot-team/" target="_blank" rel="noreferrer">Copilot</a>,
-                <a href="https://www.microsoft.com/en-us/microsoft-copilot/blog/2024/12/05/copilot-vision-now-in-preview-a-new-way-to-browse/" target="_blank" rel="noreferrer">Copilot Vision</a>,
-                <a href="https://www.microsoft.com/applied-sciences/projects/windows-agent-arena" target="_blank" rel="noreferrer">Windows Agent Arena</a>,
-                <a href="https://proceedings.iclr.cc/paper_files/paper/2025/hash/5b555804d495321df2e3208cc27f4fbc-Abstract-Conference.html" target="_blank" rel="noreferrer">VideoWebArena</a>,
-                <a href="https://arxiv.org/abs/2503.04730" target="_blank" rel="noreferrer">WinClick</a>,
-                and other agentic models/benchmarks.
-              </span>
-            </li>
+    <details class="section" id="experience" open>
+      <summary>
+        <div class="section-title">Work Experience</div>
+        <span class="chev" aria-hidden="true"></span>
+      </summary>
+    
+      <div class="section-body">
+        <ul class="bullets">
+    
+          <li>
+            <img class="logo" src="assets/Microsoft.png" alt="Microsoft logo" />
+            <strong>Microsoft</strong> — Senior Research Scientist (2024–2025)
+            <span class="muted">
+              <a href="https://www.microsoft.com/en-us/microsoft-copilot/blog/author/the-copilot-team/" target="_blank" rel="noreferrer">Copilot</a>,
+              <a href="https://www.microsoft.com/en-us/microsoft-copilot/blog/2024/12/05/copilot-vision-now-in-preview-a-new-way-to-browse/" target="_blank" rel="noreferrer">Copilot Vision</a>,
+              <a href="https://www.microsoft.com/applied-sciences/projects/windows-agent-arena" target="_blank" rel="noreferrer">Windows Agent Arena</a>,
+              <a href="https://proceedings.iclr.cc/paper_files/paper/2025/hash/5b555804d495321df2e3208cc27f4fbc-Abstract-Conference.html" target="_blank" rel="noreferrer">VideoWebArena</a>,
+              <a href="https://arxiv.org/abs/2503.04730" target="_blank" rel="noreferrer">WinClick</a>,
+              and other agentic models/benchmarks.
+            </span>
+          </li>
+    
+          <li>
+            <img class="logo" src="assets/MIT CSAIL.png" alt="MIT CSAIL logo" />
+            <strong>MIT CSAIL</strong> — Research Scientist (2023–2025)
+            <span class="muted">
+              <a href="https://futuretech.mit.edu/team/daniel-zhao" target="_blank" rel="noreferrer">Affiliated research</a>
+              on AI + economics and supercomputing.
+            </span>
+          </li>
+    
+          <li>
+            <img class="logo" src="assets/Sandbox.png" alt="SandboxAQ logo" />
+            <strong>SandboxAQ</strong> — AI Fellow in Residence (2023–2024)
+            <span class="muted">(spinoff from Google)</span>
+            <span class="muted">
+              AI for
+              <a href="https://iopscience.iop.org/article/10.1088/2632-2153/adcb88" target="_blank" rel="noreferrer">quantum chemistry</a>
+              &amp; battery simulation; LLMs for
+              <a href="https://neurips.cc/virtual/2023/84460" target="_blank" rel="noreferrer">security/cryptography</a>;
+              large quantitative models; agents for hypothesis generation and experiment design.
+            </span>
+          </li>
+    
+          <li>
+            <img class="logo" src="assets/AI for Scientifit Research.png" alt="AI for Scientific Research logo" />
+            <strong>AI for Scientific Research</strong> — AI Research Advisor (2022–2024)
+            <span class="muted">
+              Advised/volunteered on
+              <a href="https://www.aifsr.com/about-us/team" target="_blank" rel="noreferrer">applied research projects</a>
+              (x-ray crystallography, imaging analysis, multi-modal sensor fusion) across multiple institutions.
+            </span>
+          </li>
+    
+          <li>
+            <img class="logo" src="assets/Twitter.png" alt="Twitter logo" />
+            <strong>Twitter</strong> — Senior Applied Scientist (2022–2023)
+            <span class="muted">
+              LLMs for social graph analysis; recommendation systems; viral post detection.
+            </span>
+          </li>
+    
+          <li>
+            <img class="logo" src="assets/Genetech.png" alt="Genentech logo" />
+            <strong>Genentech</strong> — Visiting Researcher (2022–2023)
+            <span class="muted">
+              AI for drug discovery; parallelization and GPU support for pharmacokinetic ODE solvers.
+            </span>
+          </li>
+    
+          <li>
+            <img class="logo" src="assets/NASA.png" alt="NASA logo" />
+            <strong>NASA Jet Propulsion Laboratory (JPL)</strong> — Visiting Researcher (2022–2023)
+            <span class="muted">Quantum computing applications.</span>
+          </li>
+    
+          <li>
+            <img class="logo" src="assets/Mit Lincoln.png" alt="MIT Lincoln Laboratory logo" />
+            <strong>MIT Lincoln Laboratory</strong> — Member of Technical Staff, Senior Applied Scientist (2021–2022)
+            <span class="muted">
+              <a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=gODFPYIAAAAJ&citation_for_view=gODFPYIAAAAJ:QIV2ME_5wuYC" target="_blank" rel="noreferrer">
+                LLM inference energy benchmarking
+              </a>,
+              <a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=gODFPYIAAAAJ&citation_for_view=gODFPYIAAAAJ:7PzlFSSx8tAC" target="_blank" rel="noreferrer">
+                GPU power capping at scale
+              </a>
+            </span>.
+          </li>
+    
+          <li>
+            <img class="logo" src="assets/Yale.png" alt="Yale University logo" />
+            <strong>Yale University</strong> — Graduate Student &amp; Researcher (2018–2020)
+            <span class="muted">
+              Behavioral economics, mechanism design, market design, causal inference.
+            </span>
+          </li>
+    
+          <li>
+            <img class="logo" src="assets/Blackrock.png" alt="BlackRock logo" />
+            <strong>BlackRock</strong> — Senior Associate, Markets &amp; Analytics (2017–2018)
+            <span class="muted">Financial Markets Advisory (FMA).</span>
+          </li>
+    
+          <li>
+            <img class="logo" src="assets/Deutsche Bank .png" alt="Deutsche Bank logo" />
+            <strong>Deutsche Bank</strong> — Associate (2015–2017)
+            <span class="muted">Risk Methodology &amp; Risk Analytics.</span>
+          </li>
+    
+          <li>
+            <img class="logo" src="assets/Federal Reserve.png" alt="Federal Reserve logo" />
+            <strong>Federal Reserve Bank of Boston</strong> — Strategy &amp; Operations Associate (2014–2015)
+            <span class="muted">
+              Macroeconomic forecasting, bank stress test design, alternative data and model forecasts.
+            </span>
+          </li>
+    
+        </ul>
+      </div>
+    </details>
 
-            <li>
-              <img class="logo" src="assets/MIT%20CSAIL.png" alt="MIT CSAIL logo" />
-              <strong>MIT CSAIL</strong> — Research Scientist (2023–2025)
-              <span class="muted">
-                <a href="https://futuretech.mit.edu/team/daniel-zhao" target="_blank" rel="noreferrer">Affiliated research</a>
-                on AI + economics and supercomputing.
-              </span>
-            </li>
-
-            <li>
-              <img class="logo" src="assets/Sandbox.png" alt="SandboxAQ logo" />
-              <strong>SandboxAQ</strong> — AI Fellow in Residence (2023–2024) <span class="muted">(spinoff from Google)</span>
-              <span class="muted">
-                AI for
-                <a href="https://iopscience.iop.org/article/10.1088/2632-2153/adcb88" target="_blank" rel="noreferrer">quantum chemistry</a>
-                &amp; battery simulation; LLMs for
-                <a href="https://neurips.cc/virtual/2023/84460" target="_blank" rel="noreferrer">security/cryptography</a>;
-                large quantitative models; agents for hypothesis generation and experiment design.
-              </span>
-            </li>
-
-            <li>
-              <img class="logo" src="assets/AI%20for%20Scientifit%20Research.png" alt="AI for Scientific Research logo" />
-              <strong>AI for Scientific Research</strong> — AI Research Advisor (2022–2024)
-              <span class="muted">
-                Advised/volunteered on
-                <a href="https://www.aifsr.com/about-us/team" target="_blank" rel="noreferrer">applied research projects</a>
-                (x-ray crystallography, imaging analysis, multi-modal sensor fusion) across multiple institutions.
-              </span>
-            </li>
-
-            <li>
-              <img class="logo" src="assets/Twitter.png" alt="Twitter logo" />
-              <strong>Twitter</strong> — Senior Applied Scientist (2022–2023)
-              <span class="muted">LLMs for social graph analysis; recommendation systems; viral post detection.</span>
-            </li>
-
-            <li>
-              <img class="logo" src="assets/Genetech.png" alt="Genentech logo" />
-              <strong>Genentech</strong> — Visiting Researcher (2022–2023)
-              <span class="muted">AI for drug discovery; parallelization and GPU support for pharmacokinetic ODE solvers.</span>
-            </li>
-
-            <li>
-              <img class="logo" src="assets/NASA.png" alt="NASA logo" />
-              <strong>NASA Jet Propulsion Laboratory (JPL)</strong> — Visiting Researcher (2022–2023)
-              <span class="muted">Quantum computing applications.</span>
-            </li>
-
-            <li>
-              <img class="logo" src="assets/Mit%20Lincoln.png" alt="MIT Lincoln Laboratory logo" />
-              <strong>MIT Lincoln Laboratory</strong> — Member of Technical Staff, Senior Applied Scientist (2021–2022)
-              <span class="muted">
-                <a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=gODFPYIAAAAJ&citation_for_view=gODFPYIAAAAJ:QIV2ME_5wuYC" target="_blank" rel="noreferrer">LLM inference energy benchmarking</a>,
-                <a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=gODFPYIAAAAJ&citation_for_view=gODFPYIAAAAJ:7PzlFSSx8tAC" target="_blank" rel="noreferrer">GPU power capping at scale</a>
-              </span>.
-            </li>
-
-            <li>
-              <img class="logo" src="assets/Yale.png" alt="Yale University logo" />
-              <strong>Yale University</strong> — Graduate Student &amp; Researcher (2018–2020)
-              <span class="muted">Behavioral economics, mechanism design, market design, causal inference.</span>
-            </li>
-
-            <li>
-              <img class="logo" src="assets/Blackrock.png" alt="BlackRock logo" />
-              <strong>BlackRock</strong> — Senior Associate, Markets &amp; Analytics (2017–2018)
-              <span class="muted">Financial Markets Advisory (FMA).</span>
-            </li>
-
-            <li>
-              <img class="logo" src="assets/Deutsche%20Bank%20.png" alt="Deutsche Bank logo" />
-              <strong>Deutsche Bank</strong> — Associate (2015–2017)
-              <span class="muted">Risk Methodology &amp; Risk Analytics.</span>
-            </li>
-
-            <li>
-              <img class="logo" src="assets/Federal%20Reserve.png" alt="Federal Reserve logo" />
-              <strong>Federal Reserve Bank of Boston</strong> — Strategy &amp; Operations Associate (2014–2015)
-              <span class="muted">Macroeconomic forecasting, bank stress test design, alternative data and model forecasts.</span>
-            </li>
-          </ul>
-        </div>
-      </details>
 
       <details class="section" id="publications" open>
         <summary>
@@ -602,31 +613,45 @@
           <div class="section-title">Education</div>
           <span class="chev" aria-hidden="true"></span>
         </summary>
+      
         <div class="section-body">
           <ul class="bullets">
+      
             <li>
               <img class="logo" src="assets/NYU.png" alt="NYU logo" />
               <strong>New York University</strong> — MS, Computer Science
               <span class="muted">Concentration in artificial intelligence.</span>
             </li>
+      
             <li>
               <img class="logo" src="assets/Yale.png" alt="Yale University logo" />
               <strong>Yale University</strong> — PhD, Economics
               <span class="muted">ABD (incomplete).</span>
             </li>
+      
             <li>
               <img class="logo" src="assets/Oxford.png" alt="University of Oxford logo" />
               <strong>University of Oxford</strong> — Philosophy, Politics, Economics
-              <span class="muted">Grade: First Class with Honors · Visiting Scholar.</span>
+              <span class="muted">First Class with Honors · Visiting Scholar.</span>
             </li>
+      
             <li>
               <img class="logo" src="assets/Williams.png" alt="Williams College logo" />
               <strong>Williams College</strong> — BA, Economics
-              <span class="muted">Magna Cum Laude · Phi Beta Kappa · Founder, <a href="https://williamscollegelawsocietydotcom.wordpress.com/leadership/founders/" target="_blank" rel="noreferrer">Law Society</a></span>
+              <span class="muted">
+                Magna Cum Laude · Phi Beta Kappa · Founder,
+                <a href="https://williamscollegelawsocietydotcom.wordpress.com/leadership/founders/"
+                   target="_blank"
+                   rel="noreferrer">
+                  Law Society
+                </a>
+              </span>
             </li>
+      
           </ul>
         </div>
       </details>
+
 
       <!-- Awards section removed -->
 
