@@ -57,7 +57,7 @@
     a{ color:var(--link); text-decoration:none; }
     a:hover{ text-decoration:underline; }
 
-    /* Layout: left fixed, right normal flow (no internal scrolling) */
+    /* Layout */
     .page{
       max-width: var(--max);
       margin: 0 auto;
@@ -69,7 +69,7 @@
     }
     @media (max-width: 980px){
       .page{ grid-template-columns: 1fr; }
-      .left{ position: static; max-height:none; }
+      .left{ position: static; max-height:none; overflow: visible; }
       .right{ padding-right:0; }
     }
 
@@ -81,16 +81,13 @@
       overflow: hidden;
       padding-right: 6px;
     }
-    .right{
-      padding-right: 6px;
-    }
+    .right{ padding-right: 6px; }
 
     /* Left intro */
     .avatar{
       width: 140px;
       height: 140px;
       border-radius: 50%;
-      border: none;
       background: transparent;
       display:flex;
       align-items:center;
@@ -104,10 +101,8 @@
       display:block;
       border-radius: 16px;
     }
-
     h1{ margin:0; font-size: 44px; letter-spacing:-0.02em; }
     .subtitle{ margin-top: 6px; color: var(--muted); font-weight: 650; }
-
     .orgs{
       margin-top: 10px;
       display:flex;
@@ -116,7 +111,6 @@
       align-items:center;
     }
     .sep{ color:#999; padding: 0 6px; }
-
     .bio{
       margin-top: 14px;
       margin-bottom: 0;
@@ -127,51 +121,29 @@
     /* Icon-only links (Email + LinkedIn + Scholar) */
     .iconlinks{
       margin-top: 14px;
-      display: flex;
+      display:flex;
       gap: 12px;
-      align-items: center;
+      align-items:center;
       flex-wrap: wrap;
     }
-
     .iconlink{
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
       color: var(--muted);
       padding: 8px 10px;
       border-radius: 10px;
       border: 1px solid transparent;
     }
-
     .iconlink:hover{
-      text-decoration: none;
+      text-decoration:none;
       border-color: var(--border);
       background: #fafafa;
     }
+    .icon{ width: 18px; height: 18px; display:inline-block; }
+    .icon svg{ width:18px; height:18px; display:block; }
 
-    .icon{
-      width: 18px;
-      height: 18px;
-      display: inline-block;
-    }
-
-    .icon svg{
-      width: 18px;
-      height: 18px;
-      display: block;
-    }
-
-    /* Logos */
-    .logo{
-      width: 18px;
-      height: 18px;
-      object-fit: contain;
-      vertical-align: -3px;
-      margin-right: 8px;
-      border-radius: 4px;
-    }
-
-    /* Expandable sections */
+    /* Expandable sections (arrow LEFT of title) */
     details.section{
       border: 1px solid var(--border);
       border-radius: 14px;
@@ -184,37 +156,73 @@
       cursor: pointer;
       display:flex;
       align-items:center;
-      justify-content:space-between;
       gap: 10px;
       padding: 6px 4px;
       user-select: none;
     }
     details.section > summary::-webkit-details-marker{ display:none; }
+
+    .chev{
+      width: 10px;
+      height: 10px;
+      border-right: 2px solid #777;
+      border-bottom: 2px solid #777;
+      transform: rotate(-45deg);
+      transition: transform .15s ease;
+      flex: 0 0 auto;
+      margin-left: 2px;
+    }
+    details[open] .chev{
+      transform: rotate(45deg);
+    }
+
     .section-title{
       margin: 0;
       font-size: 20px;
       letter-spacing:-0.01em;
       font-weight: 800;
     }
-    .chev{
-      width: 10px;
-      height: 10px;
-      border-right: 2px solid #777;
-      border-bottom: 2px solid #777;
-      transform: rotate(45deg);
-      transition: transform .15s ease;
-      flex: 0 0 auto;
-      margin-right: 2px;
-    }
-    details[open] .chev{ transform: rotate(225deg); }
-
-    .section-body{ padding: 6px 4px 2px; }
+    .section-body{ padding: 8px 4px 2px; }
 
     .muted{ color: var(--muted); }
 
-    .bullets{ margin: 10px 0 0; padding-left: 18px; }
-    .bullets li{ margin: 10px 0; }
-    .bullets .muted{ display:block; margin-top: 2px; font-size: 14px; }
+    /* Work/Education rows: make logos as large as publication thumbs */
+    .rows{
+      display:flex;
+      flex-direction:column;
+      gap: 12px;
+      margin-top: 6px;
+    }
+    .row{
+      display:grid;
+      grid-template-columns: 76px minmax(0, 1fr);
+      gap: 12px;
+      padding: 12px;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      background:#fff;
+    }
+    .row-logo{
+      width: 76px;
+      height: 76px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      background: #fafafa;
+      overflow:hidden;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+    .row-logo img{
+      width:100%;
+      height:100%;
+      object-fit: contain; /* logos are usually better contained */
+      display:block;
+      padding: 10px;       /* gives nicer margins inside */
+    }
+    .row-title{ font-weight: 800; }
+    .row-sub{ margin-top: 6px; color: var(--muted); font-size: 14px; }
+    .row-sub + .row-sub{ margin-top: 6px; }
 
     /* Publications with thumbnail */
     .pubs{ display:flex; flex-direction:column; gap: 14px; margin-top: 10px; }
@@ -241,7 +249,7 @@
       object-fit: cover;
       display:block;
     }
-    .pub-title{ font-weight: 750; }
+    .pub-title{ font-weight: 800; }
     .pub-authors{ margin-top: 4px; color: var(--muted); font-size: 14px; }
     .pub-meta{ margin-top: 6px; color: #222; font-size: 14px; }
 
@@ -252,10 +260,7 @@
     }
 
     /* Media lines with descriptions */
-    .lines{
-      margin: 10px 0 0;
-      padding-left: 18px;
-    }
+    .lines{ margin: 10px 0 0; padding-left: 18px; }
     .lines li{ margin: 12px 0; }
     .lines .desc{ color: var(--muted); font-size: 14px; margin-top: 2px; }
 
@@ -276,10 +281,8 @@
 <body>
   <div class="page">
 
-    <!-- LEFT: fixed intro -->
+    <!-- LEFT -->
     <aside class="left" aria-label="Intro">
-
-      <!-- Profile picture on top of name -->
       <div class="avatar" aria-label="Profile picture">
         <img src="assets/Profile_Picture.png" alt="Dan Zhao profile photo" />
       </div>
@@ -292,7 +295,6 @@
         <span class="sep">·</span>
         <a href="https://futuretech.mit.edu/team/daniel-zhao" target="_blank" rel="noreferrer">MIT</a>
       </div>
-
 
       <p class="bio">
         I am an AI research scientist. I previously worked at
@@ -307,9 +309,28 @@
         (energy-efficient AI), focused on understanding and mitigating the energy impact of AI workloads spanning training through inference and deployment.
       </p>
 
+      <!-- Icons row (Email + LinkedIn + Scholar) -->
       <div class="iconlinks" aria-label="Profile links">
+        <!-- Email -->
+        <a class="iconlink"
+           href="mailto:danzhao.aiml@gmail.com"
+           title="danzhao.aiml@gmail.com"
+           aria-label="Email"
+           itemprop="email">
+          <span class="icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/>
+            </svg>
+          </span>
+        </a>
+
         <!-- LinkedIn -->
-        <a class="iconlink" href="https://www.linkedin.com/in/danzhao0/" target="_blank" rel="noreferrer" title="LinkedIn" aria-label="LinkedIn">
+        <a class="iconlink"
+           href="https://www.linkedin.com/in/danzhao0/"
+           target="_blank"
+           rel="noreferrer"
+           title="LinkedIn"
+           aria-label="LinkedIn">
           <span class="icon" aria-hidden="true">
             <svg viewBox="0 0 24 24" fill="currentColor">
               <path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1 4.98 2.12 4.98 3.5ZM0.5 8.5H4.5V23.5H0.5V8.5ZM8 8.5H11.8V10.6H11.85C12.38 9.62 13.7 8.6 15.64 8.6C19.73 8.6 20.5 11.05 20.5 14.24V23.5H16.5V15.35C16.5 13.41 16.46 10.92 14.05 10.92C11.61 10.92 11.25 12.8 11.25 15.23V23.5H7.25V8.5H8Z"/>
@@ -317,8 +338,13 @@
           </span>
         </a>
 
-        <!-- Google Scholar (mortarboard) -->
-        <a class="iconlink" href="https://scholar.google.com/citations?user=gODFPYIAAAAJ&hl=en" target="_blank" rel="noreferrer" title="Google Scholar" aria-label="Google Scholar">
+        <!-- Google Scholar -->
+        <a class="iconlink"
+           href="https://scholar.google.com/citations?user=gODFPYIAAAAJ&hl=en"
+           target="_blank"
+           rel="noreferrer"
+           title="Google Scholar"
+           aria-label="Google Scholar">
           <span class="icon" aria-hidden="true">
             <svg viewBox="0 0 24 24" fill="currentColor">
               <path d="M12 3L1 9l11 6 9-4.91V17h2V9L12 3zm0 14.2L5 13.27V17c0 2.76 3.13 5 7 5s7-2.24 7-5v-3.73l-7 3.93z"/>
@@ -328,139 +354,171 @@
       </div>
     </aside>
 
-    <!-- RIGHT: expandable sections (no internal scroll) -->
+    <!-- RIGHT -->
     <section class="right" aria-label="Content">
 
-    <details class="section" id="experience" open>
-      <summary>
-        <div class="section-title">Work Experience</div>
-        <span class="chev" aria-hidden="true"></span>
-      </summary>
-    
-      <div class="section-body">
-        <ul class="bullets">
-    
-          <li>
-            <img class="logo" src="assets/Microsoft.png" alt="Microsoft logo" />
-            <strong>Microsoft</strong> — Senior Research Scientist (2024–2025)
-            <span class="muted">
-              <a href="https://www.microsoft.com/en-us/microsoft-copilot/blog/author/the-copilot-team/" target="_blank" rel="noreferrer">Copilot</a>,
-              <a href="https://www.microsoft.com/en-us/microsoft-copilot/blog/2024/12/05/copilot-vision-now-in-preview-a-new-way-to-browse/" target="_blank" rel="noreferrer">Copilot Vision</a>,
-              <a href="https://www.microsoft.com/applied-sciences/projects/windows-agent-arena" target="_blank" rel="noreferrer">Windows Agent Arena</a>,
-              <a href="https://proceedings.iclr.cc/paper_files/paper/2025/hash/5b555804d495321df2e3208cc27f4fbc-Abstract-Conference.html" target="_blank" rel="noreferrer">VideoWebArena</a>,
-              <a href="https://arxiv.org/abs/2503.04730" target="_blank" rel="noreferrer">WinClick</a>,
-              and other agentic models/benchmarks.
-            </span>
-          </li>
-    
-          <li>
-            <img class="logo" src="assets/MIT CSAIL.png" alt="MIT CSAIL logo" />
-            <strong>MIT CSAIL</strong> — Research Scientist (2023–2025)
-            <span class="muted">
-              <a href="https://futuretech.mit.edu/team/daniel-zhao" target="_blank" rel="noreferrer">Affiliated research</a>
-              on AI + economics and supercomputing.
-            </span>
-          </li>
-    
-          <li>
-            <img class="logo" src="assets/Sandbox.png" alt="SandboxAQ logo" />
-            <strong>SandboxAQ</strong> — AI Fellow in Residence (2023–2024)
-            <span class="muted">(spinoff from Google)</span>
-            <span class="muted">
-              AI for
-              <a href="https://iopscience.iop.org/article/10.1088/2632-2153/adcb88" target="_blank" rel="noreferrer">quantum chemistry</a>
-              &amp; battery simulation; LLMs for
-              <a href="https://neurips.cc/virtual/2023/84460" target="_blank" rel="noreferrer">security/cryptography</a>;
-              large quantitative models; agents for hypothesis generation and experiment design.
-            </span>
-          </li>
-    
-          <li>
-            <img class="logo" src="assets/AI for Scientific Research.png" alt="AI for Scientific Research logo" />
-            <strong>AI for Scientific Research</strong> — AI Research Advisor (2022–2024)
-            <span class="muted">
-              Advised/volunteered on
-              <a href="https://www.aifsr.com/about-us/team" target="_blank" rel="noreferrer">applied research projects</a>
-              (x-ray crystallography, imaging analysis, multi-modal sensor fusion) across multiple institutions.
-            </span>
-          </li>
-    
-          <li>
-            <img class="logo" src="assets/Twitter.png" alt="Twitter logo" />
-            <strong>Twitter</strong> — Senior Applied Scientist (2022–2023)
-            <span class="muted">
-              LLMs for social graph analysis; recommendation systems; viral post detection.
-            </span>
-          </li>
-    
-          <li>
-            <img class="logo" src="assets/Genetech.png" alt="Genentech logo" />
-            <strong>Genentech</strong> — Visiting Researcher (2022–2023)
-            <span class="muted">
-              AI for drug discovery; parallelization and GPU support for pharmacokinetic ODE solvers.
-            </span>
-          </li>
-    
-          <li>
-            <img class="logo" src="assets/NASA.png" alt="NASA logo" />
-            <strong>NASA Jet Propulsion Laboratory (JPL)</strong> — Visiting Researcher (2022–2023)
-            <span class="muted">Quantum computing applications.</span>
-          </li>
-    
-          <li>
-            <img class="logo" src="assets/Mit Lincoln.png" alt="MIT Lincoln Laboratory logo" />
-            <strong>MIT Lincoln Laboratory</strong> — Member of Technical Staff, Senior Applied Scientist (2021–2022)
-            <span class="muted">
-              <a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=gODFPYIAAAAJ&citation_for_view=gODFPYIAAAAJ:QIV2ME_5wuYC" target="_blank" rel="noreferrer">
-                LLM inference energy benchmarking
-              </a>,
-              <a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=gODFPYIAAAAJ&citation_for_view=gODFPYIAAAAJ:7PzlFSSx8tAC" target="_blank" rel="noreferrer">
-                GPU power capping at scale
-              </a>
-            </span>.
-          </li>
-    
-          <li>
-            <img class="logo" src="assets/Yale.png" alt="Yale University logo" />
-            <strong>Yale University</strong> — Graduate Student &amp; Researcher (2018–2020)
-            <span class="muted">
-              Behavioral economics, mechanism design, market design, causal inference.
-            </span>
-          </li>
-    
-          <li>
-            <img class="logo" src="assets/Blackrock.png" alt="BlackRock logo" />
-            <strong>BlackRock</strong> — Senior Associate, Markets &amp; Analytics (2017–2018)
-            <span class="muted">Financial Markets Advisory (FMA).</span>
-          </li>
-    
-          <li>
-            <img class="logo" src="assets/Deutsche Bank.png" alt="Deutsche Bank logo" />
-            <strong>Deutsche Bank</strong> — Associate (2015–2017)
-            <span class="muted">Risk Methodology &amp; Risk Analytics.</span>
-          </li>
-    
-          <li>
-            <img class="logo" src="assets/Federal Reserve.png" alt="Federal Reserve logo" />
-            <strong>Federal Reserve Bank of Boston</strong> — Strategy &amp; Operations Associate (2014–2015)
-            <span class="muted">
-              Macroeconomic forecasting, bank stress test design, alternative data and model forecasts.
-            </span>
-          </li>
-    
-        </ul>
-      </div>
-    </details>
+      <details class="section" id="experience" open>
+        <summary>
+          <span class="chev" aria-hidden="true"></span>
+          <div class="section-title">Work Experience</div>
+        </summary>
+        <div class="section-body">
+          <div class="rows">
 
+            <div class="row">
+              <div class="row-logo">
+                <img src="assets/Microsoft.png" alt="Microsoft logo" />
+              </div>
+              <div>
+                <div class="row-title">Microsoft — Senior Research Scientist (2024–2025)</div>
+                <div class="row-sub">
+                  <a href="https://www.microsoft.com/en-us/microsoft-copilot/blog/author/the-copilot-team/" target="_blank" rel="noreferrer">Copilot</a>,
+                  <a href="https://www.microsoft.com/en-us/microsoft-copilot/blog/2024/12/05/copilot-vision-now-in-preview-a-new-way-to-browse/" target="_blank" rel="noreferrer">Copilot Vision</a>,
+                  <a href="https://www.microsoft.com/applied-sciences/projects/windows-agent-arena" target="_blank" rel="noreferrer">Windows Agent Arena</a>,
+                  <a href="https://proceedings.iclr.cc/paper_files/paper/2025/hash/5b555804d495321df2e3208cc27f4fbc-Abstract-Conference.html" target="_blank" rel="noreferrer">VideoWebArena</a>,
+                  <a href="https://arxiv.org/abs/2503.04730" target="_blank" rel="noreferrer">WinClick</a>,
+                  and other agentic models/benchmarks.
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="row-logo">
+                <img src="assets/MIT CSAIL.png" alt="MIT CSAIL logo" />
+              </div>
+              <div>
+                <div class="row-title">MIT CSAIL — Research Scientist (2023–2025)</div>
+                <div class="row-sub">
+                  <a href="https://futuretech.mit.edu/team/daniel-zhao" target="_blank" rel="noreferrer">Affiliated research</a>
+                  on AI + economics and supercomputing.
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="row-logo">
+                <img src="assets/Sandbox.png" alt="SandboxAQ logo" />
+              </div>
+              <div>
+                <div class="row-title">SandboxAQ — AI Fellow in Residence (2023–2024) <span class="muted">(spinoff from Google)</span></div>
+                <div class="row-sub">
+                  AI for <a href="https://iopscience.iop.org/article/10.1088/2632-2153/adcb88" target="_blank" rel="noreferrer">quantum chemistry</a>
+                  &amp; battery simulation; LLMs for
+                  <a href="https://neurips.cc/virtual/2023/84460" target="_blank" rel="noreferrer">security/cryptography</a>;
+                  large quantitative models; agents for hypothesis generation and experiment design.
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="row-logo">
+                <img src="assets/AI for Scientific Research.png" alt="AI for Scientific Research logo" />
+              </div>
+              <div>
+                <div class="row-title">AI for Scientific Research — AI Research Advisor (2022–2024)</div>
+                <div class="row-sub">
+                  Advised/volunteered on
+                  <a href="https://www.aifsr.com/about-us/team" target="_blank" rel="noreferrer">applied research projects</a>
+                  (x-ray crystallography, imaging analysis, multi-modal sensor fusion) across multiple institutions.
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="row-logo">
+                <img src="assets/Twitter.png" alt="Twitter logo" />
+              </div>
+              <div>
+                <div class="row-title">Twitter — Senior Applied Scientist (2022–2023)</div>
+                <div class="row-sub">LLMs for social graph analysis; recommendation systems; viral post detection.</div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="row-logo">
+                <img src="assets/Genetech.png" alt="Genentech logo" />
+              </div>
+              <div>
+                <div class="row-title">Genentech — Visiting Researcher (2022–2023)</div>
+                <div class="row-sub">AI for drug discovery; parallelization and GPU support for pharmacokinetic ODE solvers.</div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="row-logo">
+                <img src="assets/NASA.png" alt="NASA logo" />
+              </div>
+              <div>
+                <div class="row-title">NASA Jet Propulsion Laboratory (JPL) — Visiting Researcher (2022–2023)</div>
+                <div class="row-sub">Quantum computing applications.</div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="row-logo">
+                <img src="assets/MIT Lincoln.png" alt="MIT Lincoln Laboratory logo" />
+              </div>
+              <div>
+                <div class="row-title">MIT Lincoln Laboratory — Member of Technical Staff, Senior Applied Scientist (2021–2022)</div>
+                <div class="row-sub">
+                  <a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=gODFPYIAAAAJ&citation_for_view=gODFPYIAAAAJ:QIV2ME_5wuYC" target="_blank" rel="noreferrer">LLM inference energy benchmarking</a>,
+                  <a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=gODFPYIAAAAJ&citation_for_view=gODFPYIAAAAJ:7PzlFSSx8tAC" target="_blank" rel="noreferrer">GPU power capping at scale</a>.
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="row-logo">
+                <img src="assets/Yale.png" alt="Yale University logo" />
+              </div>
+              <div>
+                <div class="row-title">Yale University — Graduate Student &amp; Researcher (2018–2020)</div>
+                <div class="row-sub">Behavioral economics, mechanism design, market design, causal inference.</div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="row-logo">
+                <img src="assets/Blackrock.png" alt="BlackRock logo" />
+              </div>
+              <div>
+                <div class="row-title">BlackRock — Senior Associate, Markets &amp; Analytics (2017–2018)</div>
+                <div class="row-sub">Financial Markets Advisory (FMA).</div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="row-logo">
+                <img src="assets/Deutsche Bank.png" alt="Deutsche Bank logo" />
+              </div>
+              <div>
+                <div class="row-title">Deutsche Bank — Associate (2015–2017)</div>
+                <div class="row-sub">Risk Methodology &amp; Risk Analytics.</div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="row-logo">
+                <img src="assets/Federal Reserve.png" alt="Federal Reserve logo" />
+              </div>
+              <div>
+                <div class="row-title">Federal Reserve Bank of Boston — Strategy &amp; Operations Associate (2014–2015)</div>
+                <div class="row-sub">Macroeconomic forecasting, bank stress test design, alternative data and model forecasts.</div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </details>
 
       <details class="section" id="publications" open>
         <summary>
-          <div class="section-title">Selected Publications</div>
           <span class="chev" aria-hidden="true"></span>
+          <div class="section-title">Selected Publications</div>
         </summary>
         <div class="section-body">
           <div class="pubs">
-            <!-- Jul 2025 — ICML 2025 -->
+
             <div class="pub">
               <div class="pub-thumb">
                 <img src="assets/Layer by Layer.png" alt="Layer by Layer thumbnail" />
@@ -480,7 +538,6 @@
               </div>
             </div>
 
-            <!-- Jul 2025 — ICML 2025 -->
             <div class="pub">
               <div class="pub-thumb">
                 <img src="assets/Windows Agent Arena.png" alt="Windows Agent Arena thumbnail" />
@@ -500,7 +557,6 @@
               </div>
             </div>
 
-            <!-- Apr 2025 — ICLR 2025 -->
             <div class="pub">
               <div class="pub-thumb">
                 <img src="assets/VideoWeb Arena.png" alt="VideoWebArena thumbnail" />
@@ -520,7 +576,6 @@
               </div>
             </div>
 
-            <!-- Oct 2023 — SoCC 2023 -->
             <div class="pub">
               <div class="pub-thumb">
                 <img src="assets/Sustainable Super Computing.png" alt="Sustainable Supercomputing for AI thumbnail" />
@@ -540,7 +595,6 @@
               </div>
             </div>
 
-            <!-- Sep 2023 — HPEC 2023 -->
             <div class="pub">
               <div class="pub-thumb">
                 <img src="assets/From Words to Watts.png" alt="From Words to Watts thumbnail" />
@@ -560,7 +614,6 @@
               </div>
             </div>
 
-            <!-- Nov–Dec 2022 — NeurIPS 2022 -->
             <div class="pub">
               <div class="pub-thumb">
                 <img src="assets/Combining Implicit and Explicit.png" alt="Combining Explicit and Implicit Regularization thumbnail" />
@@ -571,16 +624,13 @@
                     Combining Explicit and Implicit Regularization for Efficient Learning in Deep Networks
                   </a>
                 </div>
-                <div class="pub-authors">
-                  Dan Zhao
-                </div>
+                <div class="pub-authors">Dan Zhao</div>
                 <div class="pub-meta">
                   Nov–Dec 2022 • NeurIPS 2022 — Combining explicit and implicit regularization effects for more efficient learning in deep networks.
                 </div>
               </div>
             </div>
 
-            <!-- May 2022 — IPDPSW 2022 -->
             <div class="pub">
               <div class="pub-thumb">
                 <img src="assets/Greener World for AI.png" alt="A Green(er) World for AI thumbnail" />
@@ -599,6 +649,7 @@
                 </div>
               </div>
             </div>
+
           </div>
 
           <p class="full-list">
@@ -610,55 +661,65 @@
 
       <details class="section" id="education" open>
         <summary>
-          <div class="section-title">Education</div>
           <span class="chev" aria-hidden="true"></span>
+          <div class="section-title">Education</div>
         </summary>
-      
         <div class="section-body">
-          <ul class="bullets">
-      
-            <li>
-              <img class="logo" src="assets/NYU.png" alt="NYU logo" />
-              <strong>New York University</strong> — MS, Computer Science
-              <span class="muted">Concentration in artificial intelligence.</span>
-            </li>
-      
-            <li>
-              <img class="logo" src="assets/Yale.png" alt="Yale University logo" />
-              <strong>Yale University</strong> — PhD, Economics
-              <span class="muted">ABD (incomplete).</span>
-            </li>
-      
-            <li>
-              <img class="logo" src="assets/Oxford.png" alt="University of Oxford logo" />
-              <strong>University of Oxford</strong> — Philosophy, Politics, Economics
-              <span class="muted">First Class with Honors · Visiting Scholar.</span>
-            </li>
-      
-            <li>
-              <img class="logo" src="assets/Williams.png" alt="Williams College logo" />
-              <strong>Williams College</strong> — BA, Economics
-              <span class="muted">
-                Magna Cum Laude · Phi Beta Kappa · Founder,
-                <a href="https://williamscollegelawsocietydotcom.wordpress.com/leadership/founders/"
-                   target="_blank"
-                   rel="noreferrer">
-                  Law Society
-                </a>
-              </span>
-            </li>
-      
-          </ul>
+          <div class="rows">
+
+            <div class="row">
+              <div class="row-logo">
+                <img src="assets/NYU.png" alt="NYU logo" />
+              </div>
+              <div>
+                <div class="row-title">New York University — MS, Computer Science</div>
+                <div class="row-sub">Concentration in artificial intelligence.</div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="row-logo">
+                <img src="assets/Yale.png" alt="Yale University logo" />
+              </div>
+              <div>
+                <div class="row-title">Yale University — PhD, Economics</div>
+                <div class="row-sub">ABD (incomplete).</div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="row-logo">
+                <img src="assets/Oxford.png" alt="University of Oxford logo" />
+              </div>
+              <div>
+                <div class="row-title">University of Oxford — Philosophy, Politics, Economics</div>
+                <div class="row-sub">First Class with Honors · Visiting Scholar.</div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="row-logo">
+                <img src="assets/Williams.png" alt="Williams College logo" />
+              </div>
+              <div>
+                <div class="row-title">Williams College — BA, Economics</div>
+                <div class="row-sub">
+                  Magna Cum Laude · Phi Beta Kappa · Founder,
+                  <a href="https://williamscollegelawsocietydotcom.wordpress.com/leadership/founders/" target="_blank" rel="noreferrer">Law Society</a>
+                </div>
+              </div>
+            </div>
+
+          </div>
         </div>
       </details>
-
 
       <!-- Awards section removed -->
 
       <details class="section" id="media" open>
         <summary>
-          <div class="section-title">Media Coverage &amp; Presentations</div>
           <span class="chev" aria-hidden="true"></span>
+          <div class="section-title">Media Coverage &amp; Presentations</div>
         </summary>
         <div class="section-body">
           <ul class="lines">
